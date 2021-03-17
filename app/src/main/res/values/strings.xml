@@ -8,6 +8,9 @@
     <string name="ex_label">EX</string>
     <string name="cylinders_label">Цилиндры:</string>
     <string name="valves_label">Клапаны:</string>
-    <string name="_1">1</string>
+    <string name="dig_1">1</string>
+    <string name="dig_2">2</string>
+    <string name="cylinder_number_label">Цилиндр №:</string>
+    <string name="installed_washer">Шайба:</string>
 
 </resources>

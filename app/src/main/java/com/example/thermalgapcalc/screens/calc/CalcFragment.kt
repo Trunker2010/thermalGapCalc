@@ -6,14 +6,18 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.GridLayout
 import android.widget.SeekBar
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.thermalgapcalc.EngineParamsTextWatcher
 import com.example.thermalgapcalc.R
 import com.example.thermalgapcalc.databinding.FragmentCalcBinding
 import com.example.thermalgapcalc.databinding.ItemCylinder2ValveBinding
 import com.example.thermalgapcalc.databinding.ItemCylinder4ValveBinding
+import com.example.thermalgapcalc.databinding.ItemCylinder4ValvesBinding
 import com.example.thermalgapcalc.models.Cylinder
 import java.util.*
 
@@ -37,15 +41,11 @@ class CalcFragment : Fragment() {
         }
 
 
-        class CylinderFourViewHolder(private val binding: ItemCylinder4ValveBinding) :
+        class CylinderFourViewHolder(private val binding: ItemCylinder4ValvesBinding) :
             RecyclerView.ViewHolder(binding.root) {
-            fun bind(cylinder: Cylinder) {
+            fun bind(cylinder: Cylinder, position: Int) {
                 with(binding) {
-                    inFirstValveLabelTextView.text = cylinder.inValveList[0].gap.toString()
-                    inSecondValveLabelTextView.text = cylinder.inValveList[1].gap.toString()
-
-                    exFirstValveLabelTextView.text = cylinder.exValveList[0].gap.toString()
-                    exSecondValveLabelTextView.text = cylinder.exValveList[1].gap.toString()
+                    cylinderNumber.text = (position + 1).toString()
                 }
 
 
@@ -69,8 +69,10 @@ class CalcFragment : Fragment() {
             return when (cylindersList[position].exValveList.size) {
                 1 -> {
                     R.layout.item_cylinder_2_valve
+
+
                 }
-                2 -> R.layout.item_cylinder_4_valve
+                2 -> R.layout.item_cylinder_4_valves
                 else -> -1
             }
 
@@ -78,11 +80,11 @@ class CalcFragment : Fragment() {
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
             when (viewType) {
-                R.layout.item_cylinder_4_valve -> {
+                R.layout.item_cylinder_4_valves -> {
 
 
                     return CylinderFourViewHolder(
-                        ItemCylinder4ValveBinding.inflate(
+                        ItemCylinder4ValvesBinding.inflate(
                             LayoutInflater.from(parent.context),
                             parent,
                             false
@@ -111,7 +113,7 @@ class CalcFragment : Fragment() {
         override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
             when (holder) {
                 is CylinderFourViewHolder -> {
-                    holder.bind(cylindersList[position])
+                    holder.bind(cylindersList[position], position)
                 }
                 is CylinderTwoViewHolder -> {
                     holder.bind(cylindersList[position])
@@ -144,12 +146,15 @@ class CalcFragment : Fragment() {
                         calcViewModel.valveCount = 2
                         calcViewModel.setExValve(2)
                         calcViewModel.setInValve(2)
+                        binding.cylindersRv.layoutManager = GridLayoutManager(requireContext(),2,LinearLayoutManager.VERTICAL,false)
 
                     }
                     binding.radioValve4.id -> {
                         calcViewModel.valveCount = 4
                         calcViewModel.setExValve(4)
                         calcViewModel.setInValve(4)
+                        binding.cylindersRv.layoutManager =
+                            LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
                     }
                 }
             }
