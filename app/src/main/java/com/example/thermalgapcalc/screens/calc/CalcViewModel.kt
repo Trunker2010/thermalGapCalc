@@ -41,9 +41,9 @@ class CalcViewModel(app: Application) : AndroidViewModel(app) {
                 }
 
             }
-//            updateCylinderCount(cylinderCount)
-//            setInValve(valveCount)
-//            setExValve(valveCount)
+            updateCylinderCount(cylinderCount)
+            setInValve(valveCount)
+            setExValve(valveCount)
 
 
         }
@@ -82,19 +82,40 @@ class CalcViewModel(app: Application) : AndroidViewModel(app) {
 
 
     fun updateCylinderCount(count: Int) {
-        cylinderCount = count
+//если прибавить цилиндры
+        if (count > cylinderCount) {
+            val countDif = count - cylinderCount
+            addCylinders(countDif)
+        }
+        if (count < cylinderCount) {
+            removeCylinders(count)
+        }
 
-        engine.cylindersList.clear()
-        do {
-            engine.cylindersList.add(Cylinder())
-        } while (engine.cylindersList.size != count)
-        Log.d("setCylinderCount", engine.cylindersList.size.toString())
+        cylinderCount = count
+//
+//        engine.cylindersList.clear()
+//        do {
+//            engine.cylindersList.add(Cylinder())
+//        } while (engine.cylindersList.size != count)
+//        Log.d("setCylinderCount", engine.cylindersList.size.toString())
 
 
         setInValve(valveCount)
         setExValve(valveCount)
 
         updateGapsParams()
+    }
+
+    private fun addCylinders(count: Int) {
+        do {
+            engine.cylindersList.add(Cylinder())
+        } while (engine.cylindersList.size != count + cylinderCount)
+    }
+
+    private fun removeCylinders(count: Int) {
+        do {
+            engine.cylindersList.removeLast()
+        } while (engine.cylindersList.size > count)
     }
 
     private fun updateGapsParams() {
