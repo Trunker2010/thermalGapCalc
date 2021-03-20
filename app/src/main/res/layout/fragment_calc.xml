@@ -16,15 +16,16 @@
         android:layout_weight="1"
         android:gravity="center"
         android:text="@string/gaps_label"
-        app:layout_constraintEnd_toStartOf="@id/gap_params_vertical_barrier"
+        app:layout_constraintEnd_toStartOf="@id/guideline_fifty"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/in_gap_params_layout"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/small_margin"
+        app:layout_constraintEnd_toStartOf="@id/guideline_fifty"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/gap_label_textView">
 
@@ -72,16 +73,17 @@
 
     <LinearLayout
         android:id="@+id/ex_gap_params_layout"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/small_margin"
         app:layout_constrainedHeight="true"
+        app:layout_constraintEnd_toStartOf="@id/guideline_fifty"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/in_gap_params_layout">
 
         <TextView
 
-            android:id="@+id/ex_label_textView"
+            android:id="@+id/big_ex_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/small_margin"
@@ -125,13 +127,7 @@
             app:layout_constraintStart_toEndOf="@+id/ex_plus_minus_label_text_view" />
     </LinearLayout>
 
-    <androidx.constraintlayout.widget.Barrier
-        android:id="@+id/gap_params_vertical_barrier"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:barrierDirection="end"
-        app:constraint_referenced_ids="ex_gap_params_layout"
-        tools:layout_editor_absoluteX="183dp" />
+
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/gap_params_horizontal_barrier"
@@ -160,7 +156,7 @@
         android:min="1"
         android:progress="4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/gap_params_vertical_barrier"
+        app:layout_constraintStart_toStartOf="@id/guideline_fifty"
         app:layout_constraintTop_toBottomOf="@+id/cylinders_size_textView" />
 
 
@@ -173,7 +169,7 @@
         android:layout_margin="@dimen/small_margin"
         android:text="@string/cylinders_label"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/gap_params_vertical_barrier"
+        app:layout_constraintStart_toStartOf="@id/guideline_fifty"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -193,7 +189,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/gap_params_vertical_barrier"
+        app:layout_constraintStart_toStartOf="@id/guideline_fifty"
         app:layout_constraintTop_toBottomOf="@+id/valves_label_textView">
 
         <RadioButton
@@ -223,6 +219,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/gap_params_horizontal_barrier"
         tools:itemCount="8"
-        tools:listitem="@layout/item_cylinder_4_valve" />
+        tools:listitem="@layout/item_cylinder_4_valves" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_fifty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

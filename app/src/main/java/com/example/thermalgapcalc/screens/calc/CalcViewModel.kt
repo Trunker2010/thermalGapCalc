@@ -10,7 +10,8 @@ import com.example.thermalgapcalc.models.Valve
 
 class CalcViewModel(app: Application) : AndroidViewModel(app) {
     var engine: Engine
-    private var cylinderCount = 0
+    var cylinderCount = 0
+
     var inGapParams = 0.00
     var exGapParams = 0.00
     var inTolerances = 0.00
@@ -26,20 +27,23 @@ class CalcViewModel(app: Application) : AndroidViewModel(app) {
         set(count) {
             when (count) {
                 2 -> {
-                    Log.d("setValveCount", count.toString())
+
                     field = 2
+                    Log.d("setValveCount", count.toString())
 
                 }
 
 
                 4 -> {
-                    Log.d("setValveCount", count.toString())
+
                     field = 4
+                    Log.d("setValveCount", count.toString())
                 }
 
             }
-            setInValve(valveCount)
-            setExValve(valveCount)
+//            updateCylinderCount(cylinderCount)
+//            setInValve(valveCount)
+//            setExValve(valveCount)
 
 
         }
@@ -77,10 +81,10 @@ class CalcViewModel(app: Application) : AndroidViewModel(app) {
     }
 
 
-    fun setCylinderCount(count: Int) {
+    fun updateCylinderCount(count: Int) {
         cylinderCount = count
 
-        engine.cylindersList = mutableListOf()
+        engine.cylindersList.clear()
         do {
             engine.cylindersList.add(Cylinder())
         } while (engine.cylindersList.size != count)

@@ -4,7 +4,7 @@
     <string name="gaps_label">Зазоры mm:</string>
     <string name="in_label">IN</string>
     <string name="digPlusMinus">±</string>
-    <string name="hint_0.000">0.000</string>
+    <string name="hint_0.000">0.0</string>
     <string name="ex_label">EX</string>
     <string name="cylinders_label">Цилиндры:</string>
     <string name="valves_label">Клапаны:</string>

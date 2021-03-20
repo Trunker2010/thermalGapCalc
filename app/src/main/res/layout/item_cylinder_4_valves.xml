@@ -1,333 +1,362 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:layout_margin="@dimen/small_margin"
     android:layout_height="wrap_content">
 
-
-    <TextView
-        android:id="@+id/cylinder_number"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="@dimen/smallPadding"
-        android:text="@string/dig_1"
-        app:layout_constraintBaseline_toBaselineOf="@id/cylinder_number_label"
-
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/cylinder_number_label" />
-
-    <TextView
-
-        android:id="@+id/cylinder_number_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="@dimen/smallPadding"
-        android:text="@string/cylinder_number_label"
-        app:layout_constraintEnd_toStartOf="@+id/cylinder_number"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-    <!--под номером цилиндра-->
-    <androidx.constraintlayout.widget.Barrier
-        android:id="@+id/cylinder_number_label_barrier"
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:barrierDirection="bottom"
-        app:constraint_referenced_ids="cylinder_number_label,cylinder_number" />
+        android:layout_height="wrap_content">
 
-    <!--    под номерами выпускных клапанов-->
-    <androidx.constraintlayout.widget.Barrier
-        android:id="@+id/labels_btm_barrier"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:barrierDirection="bottom"
-        app:constraint_referenced_ids="ex_n1_label,ex_n2_label" />
-
-    <TextView
-
-        android:id="@+id/ex_n1_label"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="@string/dig_1"
-        app:layout_constraintEnd_toStartOf="@id/ex_label_textView"
-        app:layout_constraintStart_toStartOf="@id/content_start"
-        app:layout_constraintTop_toBottomOf="@+id/cylinder_number_label_barrier"
-
-
-        />
-
-    <TextView
-        android:id="@+id/ex_n2_label"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-
-        android:gravity="center"
-        android:text="@string/dig_2"
-        app:layout_constraintEnd_toEndOf="@id/content_end"
-        app:layout_constraintStart_toEndOf="@id/ex_label_textView"
-        app:layout_constraintTop_toBottomOf="@+id/cylinder_number_label_barrier"
-
-        />
-
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/content_start"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="16dp" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/content_end"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        app:layout_constraintGuide_end="16dp" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/line_fifty"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.5" />
-
-    <TextView
-        android:id="@+id/ex_label_textView"
-        style="@style/valve_type_style"
-        android:text="@string/ex_label"
-        app:layout_constraintBottom_toTopOf="@id/ex_label_bottom_barrier"
-        app:layout_constraintEnd_toEndOf="@+id/line_fifty"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/line_fifty"
-        app:layout_constraintTop_toBottomOf="@+id/labels_btm_barrier" />
-    <!--зазор 1 выпуск-->
-    <LinearLayout
-        android:id="@+id/ex_gap_1_layout"
-        style="@style/left_warp_layout"
-        app:layout_constraintBottom_toTopOf="@id/ex_label_bottom_barrier"
-        app:layout_constraintEnd_toStartOf="@+id/ex_installed_washer_1"
-        app:layout_constraintStart_toStartOf="@id/content_start"
-        app:layout_constraintTop_toBottomOf="@+id/labels_btm_barrier">
 
         <TextView
-            android:id="@+id/ex_gap_label_1"
+            android:id="@+id/cylinder_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Зазор:" />
+            android:padding="@dimen/smallPadding"
+            android:text="@string/dig_1"
+            app:layout_constraintBaseline_toBaselineOf="@id/cylinder_number_label"
 
-        <EditText
-            android:id="@+id/ex_gap_1_editText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="0.255" />
-    </LinearLayout>
-
-    <!--шайба 1 выпуск-->
-    <LinearLayout
-
-        android:id="@+id/ex_installed_washer_1"
-        style="@style/warp_left_layout_style"
-        app:layout_constraintBottom_toTopOf="@id/ex_label_bottom_barrier"
-        app:layout_constraintEnd_toStartOf="@+id/left_big_valve_type_barrier"
-        app:layout_constraintStart_toEndOf="@+id/ex_gap_1_layout"
-        app:layout_constraintTop_toBottomOf="@+id/labels_btm_barrier">
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/cylinder_number_label" />
 
         <TextView
-            android:id="@+id/ex_installed_washer_1_label"
+
+            android:id="@+id/cylinder_number_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/installed_washer" />
+            android:padding="@dimen/smallPadding"
+            android:text="@string/cylinder_number_label"
+            app:layout_constraintEnd_toStartOf="@+id/cylinder_number"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <EditText
-            android:id="@+id/ex_installed_washer_1_editText"
+
+        <!--под номером цилиндра-->
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/cylinder_number_label_barrier"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:barrierDirection="bottom"
+            app:constraint_referenced_ids="cylinder_number_label,cylinder_number" />
+
+        <!--    под номерами выпускных клапанов-->
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/labels_bottom_barrier"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="0.255" />
-    </LinearLayout>
-
-    <!--зазор 2 выпуск-->
-    <LinearLayout
-
-        android:id="@+id/ex_gap_2_layout"
-        style="@style/right_gap_layout"
-        app:layout_constraintBottom_toTopOf="@id/ex_label_bottom_barrier"
-        app:layout_constraintEnd_toStartOf="@+id/ex_installed_washer_2"
-        app:layout_constraintStart_toEndOf="@+id/right_big_valve_type_barrier"
-        app:layout_constraintTop_toBottomOf="@+id/labels_btm_barrier">
+            android:orientation="horizontal"
+            app:barrierDirection="bottom"
+            app:constraint_referenced_ids="ex_n1_label,ex_n2_label" />
 
         <TextView
-            android:id="@+id/ex_gap_label_2_label"
-            android:layout_width="wrap_content"
+
+            android:id="@+id/ex_n1_label"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Зазор:" />
+            android:gravity="center"
+            android:text="@string/dig_1"
+            app:layout_constraintEnd_toStartOf="@id/big_ex_label"
+            app:layout_constraintStart_toStartOf="@id/content_start"
+            app:layout_constraintTop_toBottomOf="@+id/cylinder_number_label_divider"
 
-        <EditText
-            android:id="@+id/ex_gap_2_editText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="0.255" />
-    </LinearLayout>
 
-    <!--шайба 2 выпуск-->
-    <LinearLayout
-
-        android:id="@+id/ex_installed_washer_2"
-
-        style="@style/right_washer_layout"
-        app:layout_constraintBottom_toTopOf="@id/ex_label_bottom_barrier"
-        app:layout_constraintEnd_toEndOf="@id/content_end"
-        app:layout_constraintStart_toEndOf="@+id/ex_gap_2_layout"
-        app:layout_constraintTop_toBottomOf="@+id/labels_btm_barrier">
+            />
 
         <TextView
-            android:id="@+id/ex_installed_washer_2_label"
-            android:layout_width="wrap_content"
+            android:id="@+id/ex_n2_label"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/installed_washer" />
 
-        <EditText
-            android:id="@+id/ex_installed_washer_2_editText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="0.255" />
-    </LinearLayout>
+            android:gravity="center"
+            android:text="@string/dig_2"
+            app:layout_constraintEnd_toEndOf="@id/content_end"
+            app:layout_constraintStart_toEndOf="@id/big_ex_label"
+            app:layout_constraintTop_toBottomOf="@+id/cylinder_number_label_divider"
 
-    <androidx.constraintlayout.widget.Barrier
-        android:id="@+id/ex_label_bottom_barrier"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:barrierDirection="bottom"
-        app:constraint_referenced_ids="ex_label_textView,ex_installed_washer_2,ex_installed_washer_1,ex_gap_1_layout,ex_gap_2_layout" />
+            />
 
-    <TextView
-        android:id="@+id/big_IN_label"
-        style="@style/valve_type_style"
-        android:text="@string/in_label"
-        app:layout_constraintBottom_toBottomOf="@id/in_params_bottom_barrier"
-        app:layout_constraintEnd_toEndOf="@id/line_fifty"
-        app:layout_constraintStart_toStartOf="@id/line_fifty"
-        app:layout_constraintTop_toBottomOf="@id/ex_label_bottom_barrier" />
 
-    <!--зазор 1 впуск-->
-    <LinearLayout
-        android:id="@+id/in_gap_1_layout"
-        style="@style/left_warp_layout"
-        app:layout_constraintBottom_toTopOf="@+id/in_params_bottom_barrier"
-        app:layout_constraintEnd_toStartOf="@id/in_installed_washer_1"
-        app:layout_constraintStart_toStartOf="@id/content_start"
-        app:layout_constraintTop_toBottomOf="@id/ex_label_bottom_barrier">
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/content_start"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="16dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/content_end"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="16dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/line_fifty"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
 
         <TextView
-            android:id="@+id/in_gap_label_1"
-            android:layout_width="wrap_content"
+            android:id="@+id/big_ex_label"
+            style="@style/valve_type_style"
+            android:text="@string/ex_label"
+            app:layout_constraintBottom_toTopOf="@id/ex_label_bottom_barrier"
+            app:layout_constraintEnd_toEndOf="@+id/line_fifty"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/line_fifty"
+            app:layout_constraintTop_toBottomOf="@+id/valve_number_label_divider" />
+        <!--зазор 1 выпуск-->
+        <LinearLayout
+            android:id="@+id/ex_gap_1_layout"
+            style="@style/left_warp_layout"
+            app:layout_constraintBottom_toTopOf="@id/ex_label_bottom_barrier"
+            app:layout_constraintEnd_toStartOf="@+id/ex_installed_washer_1"
+            app:layout_constraintStart_toStartOf="@id/content_start"
+            app:layout_constraintTop_toBottomOf="@+id/valve_number_label_divider">
+
+            <TextView
+                android:id="@+id/ex_gap_label_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Зазор:" />
+
+            <EditText
+
+                android:id="@+id/ex_gap_1_edit_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_0.000" />
+        </LinearLayout>
+
+        <!--шайба 1 выпуск-->
+        <LinearLayout
+
+            android:id="@+id/ex_installed_washer_1"
+            style="@style/warp_left_layout_style"
+            app:layout_constraintBottom_toTopOf="@id/ex_label_bottom_barrier"
+            app:layout_constraintEnd_toStartOf="@+id/left_big_valve_type_barrier"
+            app:layout_constraintStart_toEndOf="@+id/ex_gap_1_layout"
+            app:layout_constraintTop_toBottomOf="@+id/valve_number_label_divider">
+
+            <TextView
+                android:id="@+id/ex_installed_washer_1_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/installed_washer" />
+
+            <EditText
+                android:id="@+id/ex_installed_washer_1_editText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_0.000" />
+        </LinearLayout>
+
+        <!--зазор 2 выпуск-->
+        <LinearLayout
+
+            android:id="@+id/ex_gap_2_layout"
+            style="@style/right_gap_layout"
+            app:layout_constraintBottom_toTopOf="@id/ex_label_bottom_barrier"
+            app:layout_constraintEnd_toStartOf="@+id/ex_installed_washer_2"
+            app:layout_constraintStart_toEndOf="@+id/right_big_valve_type_barrier"
+            app:layout_constraintTop_toBottomOf="@+id/valve_number_label_divider">
+
+            <TextView
+                android:id="@+id/ex_gap_label_2_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Зазор:" />
+
+            <EditText
+                android:id="@+id/ex_gap_2_editText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_0.000" />
+        </LinearLayout>
+
+        <!--шайба 2 выпуск-->
+        <LinearLayout
+
+            android:id="@+id/ex_installed_washer_2"
+
+            style="@style/right_washer_layout"
+            app:layout_constraintBottom_toTopOf="@id/ex_label_bottom_barrier"
+            app:layout_constraintEnd_toEndOf="@id/content_end"
+            app:layout_constraintStart_toEndOf="@id/ex_gap_2_layout"
+            app:layout_constraintTop_toBottomOf="@id/valve_number_label_divider">
+
+            <TextView
+                android:id="@+id/ex_installed_washer_2_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/installed_washer" />
+
+            <EditText
+                android:id="@+id/ex_installed_washer_2_editText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_0.000" />
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/ex_label_bottom_barrier"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Зазор:" />
-
-        <EditText
-            android:id="@+id/in_gap_1_editText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="0.255" />
-    </LinearLayout>
-
-    <!--шайба 1 впуск-->
-    <LinearLayout
-
-        android:id="@+id/in_installed_washer_1"
-        style="@style/warp_left_layout_style"
-        app:layout_constraintBottom_toTopOf="@+id/in_params_bottom_barrier"
-        app:layout_constraintEnd_toStartOf="@id/left_big_valve_type_barrier"
-        app:layout_constraintStart_toEndOf="@id/in_gap_1_layout"
-        app:layout_constraintTop_toBottomOf="@id/ex_label_bottom_barrier">
+            android:orientation="horizontal"
+            app:barrierDirection="bottom"
+            app:constraint_referenced_ids="big_ex_label,ex_installed_washer_2,ex_installed_washer_1,ex_gap_1_layout,ex_gap_2_layout" />
 
         <TextView
-            android:id="@+id/in_installed_washer_1_label"
+            android:id="@+id/big_IN_label"
+            style="@style/valve_type_style"
+            android:text="@string/in_label"
+            app:layout_constraintBottom_toBottomOf="@id/in_params_bottom_barrier"
+            app:layout_constraintEnd_toEndOf="@id/line_fifty"
+            app:layout_constraintStart_toStartOf="@id/line_fifty"
+            app:layout_constraintTop_toBottomOf="@id/ex_params_bottom_divider" />
+
+        <!--зазор 1 впуск-->
+        <LinearLayout
+            android:id="@+id/in_gap_1_layout"
+            style="@style/left_warp_layout"
+            app:layout_constraintBottom_toTopOf="@id/in_params_bottom_barrier"
+            app:layout_constraintEnd_toStartOf="@id/in_installed_washer_1"
+            app:layout_constraintStart_toStartOf="@id/content_start"
+            app:layout_constraintTop_toBottomOf="@id/ex_params_bottom_divider">
+
+            <TextView
+                android:id="@+id/in_gap_label_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Зазор:" />
+
+            <EditText
+                android:id="@+id/in_gap_1_edit_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_0.000" />
+        </LinearLayout>
+
+        <!--шайба 1 впуск-->
+        <LinearLayout
+
+            android:id="@+id/in_installed_washer_1"
+            style="@style/warp_left_layout_style"
+            app:layout_constraintBottom_toTopOf="@+id/in_params_bottom_barrier"
+            app:layout_constraintEnd_toStartOf="@id/left_big_valve_type_barrier"
+            app:layout_constraintStart_toEndOf="@id/in_gap_1_layout"
+            app:layout_constraintTop_toBottomOf="@id/ex_params_bottom_divider">
+
+            <TextView
+                android:id="@+id/in_installed_washer_1_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/installed_washer" />
+
+            <EditText
+                android:id="@+id/in_installed_washer_1_editText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_0.000" />
+        </LinearLayout>
+
+        <!--зазор 2 впуск-->
+        <LinearLayout
+
+            android:id="@+id/in_gap_2_layout"
+            style="@style/right_gap_layout"
+            app:layout_constraintBottom_toTopOf="@id/in_params_bottom_barrier"
+            app:layout_constraintEnd_toStartOf="@id/in_installed_washer_2"
+            app:layout_constraintStart_toEndOf="@id/right_big_valve_type_barrier"
+            app:layout_constraintTop_toBottomOf="@id/ex_params_bottom_divider">
+
+            <TextView
+                android:id="@+id/in_gap_label_2_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Зазор:" />
+
+            <EditText
+                android:id="@+id/in_gap_2_editText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_0.000" />
+        </LinearLayout>
+
+        <!--шайба 2 впуск-->
+        <LinearLayout
+
+            android:id="@+id/in_installed_washer_2"
+
+            style="@style/right_washer_layout"
+            app:layout_constraintBottom_toTopOf="@id/in_params_bottom_barrier"
+            app:layout_constraintEnd_toStartOf="@id/content_end"
+            app:layout_constraintStart_toEndOf="@id/in_gap_2_layout"
+            app:layout_constraintTop_toBottomOf="@id/ex_params_bottom_divider">
+
+            <TextView
+                android:id="@+id/in_installed_washer_2_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/installed_washer" />
+
+            <EditText
+                android:id="@+id/in_installed_washer_2_editText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_0.000" />
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/left_big_valve_type_barrier"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/installed_washer" />
+            app:barrierDirection="left"
+            app:constraint_referenced_ids="big_IN_label,big_ex_label" />
 
-        <EditText
-            android:id="@+id/in_installed_washer_1_editText"
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/right_big_valve_type_barrier"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="0.255" />
-    </LinearLayout>
+            app:barrierDirection="right"
+            app:constraint_referenced_ids="big_IN_label,big_ex_label" />
 
-    <!--зазор 2 впуск-->
-    <LinearLayout
-
-        android:id="@+id/in_gap_2_layout"
-        style="@style/right_gap_layout"
-        app:layout_constraintBottom_toTopOf="@id/in_params_bottom_barrier"
-        app:layout_constraintEnd_toStartOf="@+id/in_installed_washer_2"
-        app:layout_constraintStart_toEndOf="@+id/right_big_valve_type_barrier"
-        app:layout_constraintTop_toBottomOf="@id/ex_label_bottom_barrier">
-
-        <TextView
-            android:id="@+id/in_gap_label_2_label"
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/in_params_bottom_barrier"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Зазор:" />
+            app:barrierDirection="bottom"
+            app:constraint_referenced_ids="in_installed_washer_1,in_gap_1_layout,in_installed_washer_2,big_IN_label,in_gap_2_layout" />
 
-        <EditText
-            android:id="@+id/in_gap_2_editText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="0.255" />
-    </LinearLayout>
-
-    <!--шайба 2 впуск-->
-    <LinearLayout
-
-        android:id="@+id/in_installed_washer_2"
-
-        style="@style/right_washer_layout"
-        app:layout_constraintBottom_toTopOf="@+id/in_params_bottom_barrier"
-        app:layout_constraintEnd_toStartOf="@id/content_end"
-        app:layout_constraintStart_toEndOf="@+id/in_gap_2_layout"
-        app:layout_constraintTop_toBottomOf="@id/ex_label_bottom_barrier">
-
-        <TextView
-            android:id="@+id/in_installed_washer_2_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/installed_washer" />
-
-        <EditText
-            android:id="@+id/in_installed_washer_2_editText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="0.255" />
-    </LinearLayout>
-
-    <androidx.constraintlayout.widget.Barrier
-        android:id="@+id/left_big_valve_type_barrier"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:barrierDirection="left"
-        app:constraint_referenced_ids="big_IN_label,ex_label_textView" />
-
-    <androidx.constraintlayout.widget.Barrier
-        android:id="@+id/right_big_valve_type_barrier"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:barrierDirection="right"
-        app:constraint_referenced_ids="big_IN_label,ex_label_textView" />
-
-    <androidx.constraintlayout.widget.Barrier
-        android:id="@+id/in_params_bottom_barrier"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:barrierDirection="bottom"
-        app:constraint_referenced_ids="in_installed_washer_1,in_gap_1_layout,in_installed_washer_2,big_IN_label,in_gap_2_layout" />
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <View
+            app:layout_constraintStart_toEndOf="@id/content_start"
+            app:layout_constraintEnd_toStartOf="@id/content_end"
+            app:layout_constraintTop_toBottomOf="@id/cylinder_number_label_barrier"
+            android:id="@+id/cylinder_number_label_divider"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="?android:attr/listDivider" />
+        <View
+            app:layout_constraintStart_toEndOf="@id/content_start"
+            app:layout_constraintEnd_toStartOf="@id/content_end"
+            app:layout_constraintTop_toBottomOf="@id/labels_bottom_barrier"
+            android:id="@+id/valve_number_label_divider"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="?android:attr/listDivider" />
+        <View
+            app:layout_constraintStart_toEndOf="@id/content_start"
+            app:layout_constraintEnd_toStartOf="@id/content_end"
+            app:layout_constraintTop_toBottomOf="@id/ex_label_bottom_barrier"
+            android:id="@+id/ex_params_bottom_divider"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="?android:attr/listDivider" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

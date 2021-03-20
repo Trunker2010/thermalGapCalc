@@ -51,4 +51,13 @@
         <item name="android:gravity">center</item>
         <item name="android:orientation">vertical</item>
     </style>
+
+    <style name="item_two_valve_layout">
+        <item name="android:paddingTop">@dimen/smallPadding</item>
+        <item name="android:paddingBottom">@dimen/smallPadding</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:orientation">vertical</item>
+    </style>
 </resources>
