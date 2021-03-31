@@ -22,7 +22,7 @@ class CalcFragment : Fragment() {
     private lateinit var exGapParamsTextWatcher: EngineParamsTextWatcher
     private lateinit var inTolerancesTextWatcher: EngineParamsTextWatcher
     private lateinit var exTolerancesTextWatcher: EngineParamsTextWatcher
-
+//111
     private val adapter = CylinderRVAdapter()
 
 
