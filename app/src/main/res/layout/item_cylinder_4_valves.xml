@@ -6,8 +6,7 @@
     android:layout_margin="@dimen/small_margin"
     android:layout_height="wrap_content">
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -129,8 +128,7 @@
             <EditText
 
                 android:id="@+id/ex_gap_1_edit_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/item_4_valve_et"
                 android:hint="@string/hint_0.000" />
         </LinearLayout>
 
@@ -152,8 +150,7 @@
 
             <EditText
                 android:id="@+id/ex_installed_washer_1_editText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/item_4_valve_et"
                 android:hint="@string/hint_0.000" />
         </LinearLayout>
 
@@ -174,10 +171,10 @@
                 android:text="Зазор:" />
 
             <EditText
+
                 android:id="@+id/ex_gap_2_editText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="@string/hint_0.000" />
+                android:hint="@string/hint_0.000"
+                style="@style/item_4_valve_et" />
         </LinearLayout>
 
         <!--шайба 2 выпуск-->
@@ -199,8 +196,7 @@
 
             <EditText
                 android:id="@+id/ex_installed_washer_2_editText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/item_4_valve_et"
                 android:hint="@string/hint_0.000" />
         </LinearLayout>
 
@@ -238,8 +234,7 @@
 
             <EditText
                 android:id="@+id/in_gap_1_edit_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/item_4_valve_et"
                 android:hint="@string/hint_0.000" />
         </LinearLayout>
 
@@ -261,8 +256,7 @@
 
             <EditText
                 android:id="@+id/in_installed_washer_1_editText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/item_4_valve_et"
                 android:hint="@string/hint_0.000" />
         </LinearLayout>
 
@@ -284,8 +278,7 @@
 
             <EditText
                 android:id="@+id/in_gap_2_editText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/item_4_valve_et"
                 android:hint="@string/hint_0.000" />
         </LinearLayout>
 
@@ -308,8 +301,7 @@
 
             <EditText
                 android:id="@+id/in_installed_washer_2_editText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/item_4_valve_et"
                 android:hint="@string/hint_0.000" />
         </LinearLayout>
 

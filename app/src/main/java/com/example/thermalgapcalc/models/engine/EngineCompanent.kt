@@ -1,6 +1,6 @@
 package com.example.thermalgapcalc
 
-import com.example.thermalgapcalc.models.Engine
+import com.example.thermalgapcalc.models.engine.Engine
 import dagger.Component
 
 @Component
