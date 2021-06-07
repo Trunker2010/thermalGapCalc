@@ -1,9 +1,8 @@
-package com.example.thermalgapcalc.models
+package com.example.thermalgapcalc.models.engine
 
 import javax.inject.Inject
 
 class Engine @Inject constructor() {
-
     companion object {
         var inTolerances = 0.0
         var inGapParams = 0.0

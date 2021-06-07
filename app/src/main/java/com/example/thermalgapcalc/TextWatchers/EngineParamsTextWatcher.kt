@@ -1,9 +1,10 @@
-package com.example.thermalgapcalc
+package com.example.thermalgapcalc.TextWatchers
 
 import android.text.Editable
 import android.text.TextWatcher
 
 class EngineParamsTextWatcher(val textChange: (CharSequence?) -> Unit) : TextWatcher {
+
 
     override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
 
@@ -14,6 +15,7 @@ class EngineParamsTextWatcher(val textChange: (CharSequence?) -> Unit) : TextWat
     }
 
     override fun afterTextChanged(s: Editable?) {
+
 
     }
 }
