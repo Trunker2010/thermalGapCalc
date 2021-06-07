@@ -3,10 +3,10 @@ package com.example.thermalgapcalc.screens.calc
 import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
-import com.example.thermalgapcalc.models.Cylinder
+import com.example.thermalgapcalc.models.engine.Cylinder
 import com.example.thermalgapcalc.DaggerEngineComponent
-import com.example.thermalgapcalc.models.Engine
-import com.example.thermalgapcalc.models.Valve
+import com.example.thermalgapcalc.models.engine.Engine
+import com.example.thermalgapcalc.models.engine.Valve
 
 class CalcViewModel(app: Application) : AndroidViewModel(app) {
     var engine: Engine
@@ -32,10 +32,7 @@ class CalcViewModel(app: Application) : AndroidViewModel(app) {
                     Log.d("setValveCount", count.toString())
 
                 }
-
-
                 4 -> {
-
                     field = 4
                     Log.d("setValveCount", count.toString())
                 }
@@ -44,8 +41,6 @@ class CalcViewModel(app: Application) : AndroidViewModel(app) {
             updateCylinderCount(cylinderCount)
             setInValve(valveCount)
             setExValve(valveCount)
-
-
         }
 
     fun setInValve(count: Int) {

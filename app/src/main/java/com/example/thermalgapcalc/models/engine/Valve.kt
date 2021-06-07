@@ -1,4 +1,4 @@
-package com.example.thermalgapcalc.models
+package com.example.thermalgapcalc.models.engine
 
 import javax.inject.Inject
 

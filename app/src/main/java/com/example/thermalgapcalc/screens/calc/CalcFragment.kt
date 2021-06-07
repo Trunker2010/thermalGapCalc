@@ -1,17 +1,14 @@
 package com.example.thermalgapcalc.screens.calc
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SeekBar
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.thermalgapcalc.CylinderRVAdapter
-import com.example.thermalgapcalc.EngineParamsTextWatcher
+import com.example.thermalgapcalc.TextWatchers.EngineParamsTextWatcher
 import com.example.thermalgapcalc.databinding.FragmentCalcBinding
 
 class CalcFragment : Fragment() {
@@ -22,9 +19,9 @@ class CalcFragment : Fragment() {
     private lateinit var exGapParamsTextWatcher: EngineParamsTextWatcher
     private lateinit var inTolerancesTextWatcher: EngineParamsTextWatcher
     private lateinit var exTolerancesTextWatcher: EngineParamsTextWatcher
-//111
-    private val adapter = CylinderRVAdapter()
 
+    //111
+    private val adapter = CylinderRVAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,33 +49,17 @@ class CalcFragment : Fragment() {
                             calcViewModel.updateCylinderCount(binding.cylindersSeekBar.progress)
                         }
 
-//                        calcViewModel.setExValve(2)
-//                        calcViewModel.setInValve(2)
-
-
-
                     }
                     binding.radioValve4.id -> {
-
-
                         if (calcViewModel.valveCount != 4) {
                             calcViewModel.valveCount = 4
                             calcViewModel.updateCylinderCount(binding.cylindersSeekBar.progress)
                         }
-
-//                        calcViewModel.setExValve(4)
-//                        calcViewModel.setInValve(4)
-
-
-
                     }
                 }
                 adapter.setCylinders(calcViewModel.engine.cylindersList)
             }
-
-
         }
-
 
         if (calcViewModel.valveCount == 0) {
             binding.valvesRadioGroup.check(binding.radioValve2.id)
@@ -86,18 +67,13 @@ class CalcFragment : Fragment() {
         if (calcViewModel.cylinderCount == 0) {
             calcViewModel.updateCylinderCount(binding.cylindersSeekBar.progress)
         }
-
         addTextWatchers()
-
-
-
 
         binding.cylindersSeekBar.setOnSeekBarChangeListener(object :
             SeekBar.OnSeekBarChangeListener {
+
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 binding.cylindersSizeTextView.text = progress.toString()
-
-
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
@@ -117,11 +93,9 @@ class CalcFragment : Fragment() {
 
         binding.cylindersRv.adapter = adapter
 
-
         adapter.setCylinders(calcViewModel.engine.cylindersList)
         return binding.root
     }
-
 
     override fun onDestroyView() {
         super.onDestroyView()
@@ -165,13 +139,5 @@ class CalcFragment : Fragment() {
         binding.exGapParamsEditText.addTextChangedListener(exGapParamsTextWatcher)
         binding.inTolerancesEditText.addTextChangedListener(inTolerancesTextWatcher)
         binding.exTolerancesEditText.addTextChangedListener(exTolerancesTextWatcher)
-    }
-
-    override fun onStop() {
-        Log.d(
-            "cylinder",
-            calcViewModel.engine.cylindersList[0].exValveList[0].measuredGap.toString()
-        )
-        super.onStop()
     }
 }
