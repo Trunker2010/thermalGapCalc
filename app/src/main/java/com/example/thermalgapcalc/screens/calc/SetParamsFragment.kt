@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.thermalgapcalc.CylinderRVAdapter
 import com.example.thermalgapcalc.TextWatchers.EngineParamsTextWatcher
+import com.example.thermalgapcalc.databinding.EngineSettingsBarBinding
 import com.example.thermalgapcalc.databinding.FragmentCalcBinding
 
 class SetParamsFragment : Fragment() {
@@ -19,6 +20,7 @@ class SetParamsFragment : Fragment() {
     private lateinit var exGapParamsTextWatcher: EngineParamsTextWatcher
     private lateinit var inTolerancesTextWatcher: EngineParamsTextWatcher
     private lateinit var exTolerancesTextWatcher: EngineParamsTextWatcher
+    private lateinit var engineSettingsBarBinding: EngineSettingsBarBinding
     private val adapter = CylinderRVAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,28 +29,28 @@ class SetParamsFragment : Fragment() {
         initTextWatchers()
     }
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
         _binding = FragmentCalcBinding.inflate(inflater, container, false)
-        binding.cylindersSizeTextView.text = binding.cylindersSeekBar.progress.toString()
+        engineSettingsBarBinding = binding.engineSettings
+        engineSettingsBarBinding.cylindersSizeTextView.text = engineSettingsBarBinding.cylindersSeekBar.progress.toString()
 
-        binding.valvesRadioGroup.setOnCheckedChangeListener { group, checkedId ->
-            if (group.id == binding.valvesRadioGroup.id) {
+        engineSettingsBarBinding.valvesRadioGroup.setOnCheckedChangeListener { group, checkedId ->
+            if (group.id == engineSettingsBarBinding.valvesRadioGroup.id) {
                 when (checkedId) {
-                    binding.radioValve2.id -> {
+                    engineSettingsBarBinding.radioValve2.id -> {
                         if (setParamsViewModel.valveCount != 2) {
                             setParamsViewModel.valveCount = 2
-                            setParamsViewModel.updateCylinderCount(binding.cylindersSeekBar.progress)
+                            setParamsViewModel.updateCylinderCount(engineSettingsBarBinding.cylindersSeekBar.progress)
                         }
                     }
-                    binding.radioValve4.id -> {
+                    engineSettingsBarBinding.radioValve4.id -> {
                         if (setParamsViewModel.valveCount != 4) {
                             setParamsViewModel.valveCount = 4
-                            setParamsViewModel.updateCylinderCount(binding.cylindersSeekBar.progress)
+                            setParamsViewModel.updateCylinderCount(engineSettingsBarBinding.cylindersSeekBar.progress)
                         }
                     }
                 }
@@ -57,18 +59,18 @@ class SetParamsFragment : Fragment() {
         }
 
         if (setParamsViewModel.valveCount == 0) {
-            binding.valvesRadioGroup.check(binding.radioValve2.id)
+            engineSettingsBarBinding.valvesRadioGroup.check(engineSettingsBarBinding.radioValve2.id)
         }
         if (setParamsViewModel.cylinderCount == 0) {
-            setParamsViewModel.updateCylinderCount(binding.cylindersSeekBar.progress)
+            setParamsViewModel.updateCylinderCount(engineSettingsBarBinding.cylindersSeekBar.progress)
         }
         addTextWatchers()
 
-        binding.cylindersSeekBar.setOnSeekBarChangeListener(object :
+        engineSettingsBarBinding.cylindersSeekBar.setOnSeekBarChangeListener(object :
             SeekBar.OnSeekBarChangeListener {
 
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                binding.cylindersSizeTextView.text = progress.toString()
+                engineSettingsBarBinding.cylindersSizeTextView.text = progress.toString()
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
@@ -130,9 +132,9 @@ class SetParamsFragment : Fragment() {
     }
 
     private fun addTextWatchers() {
-        binding.inGapParamsEditText.addTextChangedListener(inGapParamsTextWatcher)
-        binding.exGapParamsEditText.addTextChangedListener(exGapParamsTextWatcher)
-        binding.inTolerancesEditText.addTextChangedListener(inTolerancesTextWatcher)
-        binding.exTolerancesEditText.addTextChangedListener(exTolerancesTextWatcher)
+        engineSettingsBarBinding.inGapParamsEditText.addTextChangedListener(inGapParamsTextWatcher)
+        engineSettingsBarBinding.exGapParamsEditText.addTextChangedListener(exGapParamsTextWatcher)
+        engineSettingsBarBinding.inTolerancesEditText.addTextChangedListener(inTolerancesTextWatcher)
+        engineSettingsBarBinding.exTolerancesEditText.addTextChangedListener(exTolerancesTextWatcher)
     }
 }
