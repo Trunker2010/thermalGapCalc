@@ -8,7 +8,6 @@ class CylinderParamsTextWatcher(val textChange: (Int, CharSequence?) -> Unit) : 
 
     fun updatePosition(position: Int) {
         this.position = position
-
     }
 
     override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -18,10 +17,8 @@ class CylinderParamsTextWatcher(val textChange: (Int, CharSequence?) -> Unit) : 
     }
 
     override fun afterTextChanged(s: Editable?) {
-        if (s!!.isNotEmpty()) {
+        if (s!!.isNotEmpty()&& s!!.toString()!=".") {
             textChange(position, s)
-        } else {
-            textChange(position, "0.0")
         }
     }
 }

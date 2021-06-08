@@ -1,6 +1,7 @@
 package com.example.thermalgapcalc
 
 import android.text.SpannableStringBuilder
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -195,6 +196,7 @@ class CylinderRVAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 )
                 holder.setTextWatcher(CylinderParamsTextWatcher { pos: Int, charSequence: CharSequence? ->
                     with(holder.binding) {
+
                         when (charSequence.hashCode()) {
                             exGap1EditText.text.hashCode() -> {
                                 cylindersList[pos].exValveList[0].measuredGap =
@@ -250,12 +252,17 @@ class CylinderRVAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                         false
                     )
                 )
+
                 holder.setTextWatcher(CylinderParamsTextWatcher { pos: Int, charSequence: CharSequence? ->
                     with(holder.binding) {
                         when (charSequence.hashCode()) {
                             exGapEditText.text.hashCode() -> {
                                 cylindersList[pos].exValveList[0].measuredGap =
                                     charSequence.toString().toDouble()
+                                Log.d(
+                                    "cylindersList",
+                                    cylindersList[pos].exValveList[0].measuredGap.toString()
+                                )
                             }
 
                             exInstalledWasherEditText.text.hashCode() -> {
@@ -305,7 +312,6 @@ class CylinderRVAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             is CylinderTwoViewHolder -> {
                 holder.updatePosition(adapterPos)
                 holder.bind(cylindersList[adapterPos], adapterPos)
-
             }
         }
     }
