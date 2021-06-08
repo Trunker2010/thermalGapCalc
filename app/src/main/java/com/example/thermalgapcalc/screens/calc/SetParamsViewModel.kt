@@ -8,7 +8,7 @@ import com.example.thermalgapcalc.DaggerEngineComponent
 import com.example.thermalgapcalc.models.engine.Engine
 import com.example.thermalgapcalc.models.engine.Valve
 
-class CalcViewModel(app: Application) : AndroidViewModel(app) {
+class SetParamsViewModel(app: Application) : AndroidViewModel(app) {
     var engine: Engine
     var cylinderCount = 0
     var inGapParams = 0.00
