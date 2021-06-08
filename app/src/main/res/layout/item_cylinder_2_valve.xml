@@ -10,7 +10,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-
         <TextView
             android:id="@+id/cylinder_number"
             android:layout_width="wrap_content"
@@ -18,12 +17,10 @@
             android:padding="@dimen/smallPadding"
             android:text="@string/dig_1"
             app:layout_constraintBaseline_toBaselineOf="@id/cylinder_number_label"
-
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/cylinder_number_label" />
 
         <TextView
-
             android:id="@+id/cylinder_number_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -53,7 +50,6 @@
             android:orientation="horizontal"
             app:barrierDirection="bottom"
             tools:layout_editor_absoluteY="47dp" />
-
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/content_start"
@@ -90,7 +86,6 @@
         <!--зазор 1 выпуск-->
         <LinearLayout
             android:id="@+id/ex_gap_1_layout"
-
             style="@style/item_two_valve_layout"
             app:layout_constraintBottom_toTopOf="@id/ex_label_bottom_barrier"
             app:layout_constraintEnd_toStartOf="@id/left_big_valve_type_barrier"
@@ -100,17 +95,13 @@
 
             <TextView
                 android:id="@+id/ex_gap_label_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Зазор:" />
+                android:text="Зазор:"
+                style="@style/item_cylinder_param_text" />
 
             <EditText
+                android:gravity="center"
                 android:id="@+id/ex_gap_edit_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="@string/hint_0.000"
-                android:inputType="numberDecimal"
-                android:maxLength="5" />
+                style="@style/param_editText" />
         </LinearLayout>
         <!--шайба 1 выпуск-->
         <LinearLayout
@@ -122,23 +113,14 @@
             app:layout_constraintTop_toBottomOf="@+id/cylinder_number_label_divider">
 
             <TextView
+                style="@style/item_cylinder_param_text"
                 android:id="@+id/ex_installed_washer_1_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:text="@string/installed_washer" />
 
             <EditText
                 android:id="@+id/ex_installed_washer_editText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="@string/hint_0.000"
-                android:inputType="numberDecimal"
-                android:maxLength="5" />
+                style="@style/param_editText" />
         </LinearLayout>
-
-        <!--зазор 2 выпуск-->
-
-        <!--шайба 2 выпуск-->
 
         <androidx.constraintlayout.widget.Barrier
             android:id="@+id/ex_label_bottom_barrier"
@@ -168,18 +150,13 @@
             app:layout_constraintTop_toBottomOf="@id/ex_label_bottom_divider">
 
             <TextView
+                style="@style/item_cylinder_param_text"
                 android:id="@+id/in_gap_label_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:text="Зазор:" />
 
             <EditText
                 android:id="@+id/in_gap_edit_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="@string/hint_0.000"
-                android:inputType="numberDecimal"
-                android:maxLength="5" />
+                style="@style/param_editText" />
         </LinearLayout>
 
         <!--шайба 1 впуск-->
@@ -193,18 +170,13 @@
             app:layout_constraintTop_toBottomOf="@id/ex_label_bottom_divider">
 
             <TextView
+                style="@style/item_cylinder_param_text"
                 android:id="@+id/in_installed_washer_1_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:text="@string/installed_washer" />
 
             <EditText
                 android:id="@+id/in_installed_washer_1_editText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="@string/hint_0.000"
-                android:inputType="numberDecimal"
-                android:maxLength="5" />
+                style="@style/param_editText" />
         </LinearLayout>
 
         <androidx.constraintlayout.widget.Barrier
@@ -232,21 +204,22 @@
             tools:layout_editor_absoluteY="221dp" />
 
         <View
-            app:layout_constraintStart_toEndOf="@id/content_start"
-            app:layout_constraintEnd_toStartOf="@id/content_end"
-            app:layout_constraintTop_toBottomOf="@id/cylinder_number_label_barrier"
             android:id="@+id/cylinder_number_label_divider"
             android:layout_width="0dp"
             android:layout_height="1dp"
-            android:background="?android:attr/listDivider" />
-        <View
-            app:layout_constraintStart_toEndOf="@id/content_start"
+            android:background="?android:attr/listDivider"
             app:layout_constraintEnd_toStartOf="@id/content_end"
-            app:layout_constraintTop_toBottomOf="@id/ex_label_bottom_barrier"
+            app:layout_constraintStart_toEndOf="@id/content_start"
+            app:layout_constraintTop_toBottomOf="@id/cylinder_number_label_barrier" />
+
+        <View
             android:id="@+id/ex_label_bottom_divider"
             android:layout_width="0dp"
             android:layout_height="1dp"
-            android:background="?android:attr/listDivider" />
+            android:background="?android:attr/listDivider"
+            app:layout_constraintEnd_toStartOf="@id/content_end"
+            app:layout_constraintStart_toEndOf="@id/content_start"
+            app:layout_constraintTop_toBottomOf="@id/ex_label_bottom_barrier" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

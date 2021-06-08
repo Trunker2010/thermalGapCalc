@@ -64,18 +64,27 @@
     <style name="item_4_valve_et">
         <item name="android:gravity">center_horizontal</item>
         <item name="android:inputType">numberDecimal</item>
-        <item name="android:layout_margin">@dimen/small_margin</item>
+        <item name="android:layout_marginHorizontal">@dimen/small_margin</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
 
     <style name="param_editText">
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:hint">@string/hint_0.000</item>
         <item name="android:minEms">2</item>
         <item name="android:maxLength">5</item>
         <item name="android:maxEms">3</item>
         <item name="android:maxLines">1</item>
         <item name="android:inputType">numberDecimal</item>
         <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="item_cylinder_param_text">
+        <item name="android:layout_marginHorizontal">@dimen/small_margin</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
 </resources>

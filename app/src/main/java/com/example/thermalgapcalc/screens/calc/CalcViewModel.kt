@@ -11,7 +11,6 @@ import com.example.thermalgapcalc.models.engine.Valve
 class CalcViewModel(app: Application) : AndroidViewModel(app) {
     var engine: Engine
     var cylinderCount = 0
-
     var inGapParams = 0.00
     var exGapParams = 0.00
     var inTolerances = 0.00
@@ -22,21 +21,17 @@ class CalcViewModel(app: Application) : AndroidViewModel(app) {
         engine = engineComponent.getEngine()
     }
 
-
     var valveCount = 0
         set(count) {
             when (count) {
                 2 -> {
-
                     field = 2
                     Log.d("setValveCount", count.toString())
-
                 }
                 4 -> {
                     field = 4
                     Log.d("setValveCount", count.toString())
                 }
-
             }
             updateCylinderCount(cylinderCount)
             setInValve(valveCount)
@@ -72,9 +67,7 @@ class CalcViewModel(app: Application) : AndroidViewModel(app) {
         }
         updateExGapParams(exGapParams)
         updateExTolerances(exTolerances)
-
     }
-
 
     fun updateCylinderCount(count: Int) {
 //если прибавить цилиндры
@@ -87,17 +80,8 @@ class CalcViewModel(app: Application) : AndroidViewModel(app) {
         }
 
         cylinderCount = count
-//
-//        engine.cylindersList.clear()
-//        do {
-//            engine.cylindersList.add(Cylinder())
-//        } while (engine.cylindersList.size != count)
-//        Log.d("setCylinderCount", engine.cylindersList.size.toString())
-
-
         setInValve(valveCount)
         setExValve(valveCount)
-
         updateGapsParams()
     }
 
@@ -114,12 +98,10 @@ class CalcViewModel(app: Application) : AndroidViewModel(app) {
     }
 
     private fun updateGapsParams() {
-
         updateInTolerances(inTolerances)
         updateInGapParams(inGapParams)
         updateExGapParams(exGapParams)
         updateExTolerances(exTolerances)
-
     }
 
     fun updateInGapParams(gap: Double) {
@@ -129,8 +111,6 @@ class CalcViewModel(app: Application) : AndroidViewModel(app) {
                 valve.gap = gap
             }
         }
-
-
     }
 
     fun updateExGapParams(gap: Double) {
@@ -159,6 +139,4 @@ class CalcViewModel(app: Application) : AndroidViewModel(app) {
             }
         }
     }
-
-
 }
