@@ -19,15 +19,12 @@ class CalcFragment : Fragment() {
     private lateinit var exGapParamsTextWatcher: EngineParamsTextWatcher
     private lateinit var inTolerancesTextWatcher: EngineParamsTextWatcher
     private lateinit var exTolerancesTextWatcher: EngineParamsTextWatcher
-
-    //111
     private val adapter = CylinderRVAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         calcViewModel = ViewModelProvider(this).get(CalcViewModel::class.java)
         initTextWatchers()
-
     }
 
 
@@ -39,7 +36,6 @@ class CalcFragment : Fragment() {
         _binding = FragmentCalcBinding.inflate(inflater, container, false)
         binding.cylindersSizeTextView.text = binding.cylindersSeekBar.progress.toString()
 
-
         binding.valvesRadioGroup.setOnCheckedChangeListener { group, checkedId ->
             if (group.id == binding.valvesRadioGroup.id) {
                 when (checkedId) {
@@ -48,7 +44,6 @@ class CalcFragment : Fragment() {
                             calcViewModel.valveCount = 2
                             calcViewModel.updateCylinderCount(binding.cylindersSeekBar.progress)
                         }
-
                     }
                     binding.radioValve4.id -> {
                         if (calcViewModel.valveCount != 4) {

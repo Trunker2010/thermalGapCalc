@@ -10,13 +10,6 @@ import com.example.thermalgapcalc.databinding.ItemCylinder4ValvesBinding
 import com.example.thermalgapcalc.models.engine.Cylinder
 import java.util.*
 
-//interface twoValveTextChangeCallbacks {
-//    fun warpEx(charSequence: CharSequence?, cylinder: Cylinder)
-//    fun gapEx(charSequence: CharSequence?, cylinder: Cylinder)
-//    fun warpIn(charSequence: CharSequence?, cylinder: Cylinder)
-//    fun gapIn(charSequence: CharSequence?, cylinder: Cylinder)
-//}
-
 class CylinderRVAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     var cylindersList = Collections.emptyList<Cylinder>()
 
@@ -52,61 +45,7 @@ class CylinderRVAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 inGap2EditText.text =
                     SpannableStringBuilder(cylinder.inValveList[1].measuredGap.toString())
 
-//                //зазор выпускной 2
-//                exGap2EditText.addTextChangedListener(EngineParamsTextWatcher { gap ->
-//                    cylinder.exValveList[1].measuredGap =
-//                        if (gap!!.isNotEmpty()) gap.toString().toDouble() else 0.0
-//
-//                })
-//
-//                //зазор выпускной 1
-//                exGap1EditText.addTextChangedListener(EngineParamsTextWatcher { gap ->
-//                    Log.d("exGap1EditText", cylinder.exValveList.size.toString())
-//                    cylinder.exValveList[0].measuredGap =
-//                        if (gap!!.isNotEmpty()) gap.toString().toDouble() else 0.0
-//
-//                })
-//
-//                //шайба выпускная 2
-//                exInstalledWasher2EditText.addTextChangedListener(EngineParamsTextWatcher { washer ->
-//                    cylinder.exValveList[1].washer =
-//                        if (washer!!.isNotEmpty()) washer.toString().toDouble() else 0.0
-//                })
-//
-//                //шайба выпускная 1
-//                exInstalledWasher1EditText.addTextChangedListener(EngineParamsTextWatcher { washer ->
-//                    cylinder.exValveList[0].washer =
-//                        if (washer!!.isNotEmpty()) washer.toString().toDouble() else 0.0
-//
-//                })
-//
-//
-//                //шайба впускная 2
-//                inInstalledWasher2EditText.addTextChangedListener(EngineParamsTextWatcher { washer ->
-//                    cylinder.inValveList[1].washer =
-//                        if (washer!!.isNotEmpty()) washer.toString().toDouble() else 0.0
-//                })
-//
-//                //шайба впускная 1
-//                inInstalledWasher1EditText.addTextChangedListener(EngineParamsTextWatcher { washer ->
-//                    cylinder.inValveList[0].washer =
-//                        if (washer!!.isNotEmpty()) washer.toString().toDouble() else 0.0
-//                })
-//
-//                //зазор впускной 2
-//                inGap2EditText.addTextChangedListener(EngineParamsTextWatcher { gap ->
-//                    cylinder.inValveList[1].measuredGap =
-//                        if (gap!!.isNotEmpty()) gap.toString().toDouble() else 0.0
-//                })
-//                //зазор впускной 1
-//                inGap1EditText.addTextChangedListener(EngineParamsTextWatcher { gap ->
-//                    cylinder.inValveList[0].measuredGap =
-//                        if (gap!!.isNotEmpty()) gap.toString().toDouble() else 0.0
-//                })
-
-
             }
-
         }
 
         override fun updatePosition(pos: Int) {
@@ -184,7 +123,6 @@ class CylinderRVAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
             ) {
             with(binding) {
-
                 exGapEditText.text =
                     SpannableStringBuilder(cylinder.exValveList[0].measuredGap.toString())
                 inGapEditText.text =
@@ -194,8 +132,6 @@ class CylinderRVAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                     SpannableStringBuilder(cylinder.exValveList[0].washer.toString())
                 inInstalledWasher1EditText.text =
                     SpannableStringBuilder(cylinder.inValveList[0].washer.toString())
-
-//                зазор выпускной
 
                 cylinderNumber.text = (position + 1).toString()
             }
@@ -211,12 +147,9 @@ class CylinderRVAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
         override fun enableTextWatcher() {
             with(binding) {
-
                 exGapEditText.addTextChangedListener(cParamsTextWatcher)
-
                 //шайба выпускная
                 exInstalledWasherEditText.addTextChangedListener(cParamsTextWatcher)
-
                 //зазор впускной
                 inGapEditText.addTextChangedListener(cParamsTextWatcher)
                 //шайбы впуск
@@ -229,14 +162,12 @@ class CylinderRVAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 exGapEditText.removeTextChangedListener(cParamsTextWatcher)
                 //шайба выпускная
                 exInstalledWasherEditText.removeTextChangedListener(cParamsTextWatcher)
-
                 //зазор впускной
                 inGapEditText.removeTextChangedListener(cParamsTextWatcher)
                 //шайбы впуск
                 inInstalledWasher1EditText.removeTextChangedListener(cParamsTextWatcher)
             }
         }
-
     }
 
 
@@ -264,7 +195,6 @@ class CylinderRVAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 )
                 holder.setTextWatcher(CylinderParamsTextWatcher { pos: Int, charSequence: CharSequence? ->
                     with(holder.binding) {
-//                        if (charSequence!!.isNotEmpty()) {
                         when (charSequence.hashCode()) {
                             exGap1EditText.text.hashCode() -> {
                                 cylindersList[pos].exValveList[0].measuredGap =
@@ -307,7 +237,6 @@ class CylinderRVAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                             }
                         }
                     }
-//                    }
                 })
 
                 return holder
