@@ -124,7 +124,7 @@
                 style="@style/item_cylinder_param_text"
                 android:text="Зазор:" />
 
-            <EditText
+            <com.example.thermalgapcalc.ParamsEditText
                 android:id="@+id/ex_gap_1_edit_text"
                 style="@style/item_4_valve_et"
                 android:hint="@string/hint_0.000" />
@@ -145,7 +145,7 @@
                 android:id="@+id/ex_installed_washer_1_label"
                 android:text="@string/installed_washer" />
 
-            <EditText
+            <com.example.thermalgapcalc.ParamsEditText
                 android:id="@+id/ex_installed_washer_1_editText"
                 style="@style/item_4_valve_et"
                 android:hint="@string/hint_0.000" />
@@ -166,18 +166,15 @@
                 android:id="@+id/ex_gap_label_2_label"
                 android:text="Зазор:" />
 
-            <EditText
-
+            <com.example.thermalgapcalc.ParamsEditText
                 android:id="@+id/ex_gap_2_editText"
-                android:hint="@string/hint_0.000"
-                style="@style/item_4_valve_et" />
+                style="@style/item_4_valve_et"
+                android:hint="@string/hint_0.000" />
         </LinearLayout>
 
         <!--шайба 2 выпуск-->
         <LinearLayout
-
             android:id="@+id/ex_installed_washer_2"
-
             style="@style/right_washer_layout"
             app:layout_constraintBottom_toTopOf="@id/ex_label_bottom_barrier"
             app:layout_constraintEnd_toEndOf="@id/content_end"
@@ -189,7 +186,7 @@
                 android:id="@+id/ex_installed_washer_2_label"
                 android:text="@string/installed_washer" />
 
-            <EditText
+            <com.example.thermalgapcalc.ParamsEditText
                 android:id="@+id/ex_installed_washer_2_editText"
                 style="@style/item_4_valve_et"
                 android:hint="@string/hint_0.000" />
@@ -226,7 +223,7 @@
                 android:id="@+id/in_gap_label_1"
                 android:text="Зазор:" />
 
-            <EditText
+            <com.example.thermalgapcalc.ParamsEditText
                 android:id="@+id/in_gap_1_edit_text"
                 style="@style/item_4_valve_et"
                 android:hint="@string/hint_0.000" />
@@ -247,7 +244,7 @@
                 android:id="@+id/in_installed_washer_1_label"
                 android:text="@string/installed_washer" />
 
-            <EditText
+            <com.example.thermalgapcalc.ParamsEditText
                 android:id="@+id/in_installed_washer_1_editText"
                 style="@style/item_4_valve_et"
                 android:hint="@string/hint_0.000" />
@@ -268,7 +265,7 @@
                 android:id="@+id/in_gap_label_2_label"
                 android:text="Зазор:" />
 
-            <EditText
+            <com.example.thermalgapcalc.ParamsEditText
                 android:id="@+id/in_gap_2_editText"
                 style="@style/item_4_valve_et"
                 android:hint="@string/hint_0.000" />
@@ -290,7 +287,7 @@
                 android:id="@+id/in_installed_washer_2_label"
                 android:text="@string/installed_washer" />
 
-            <EditText
+            <com.example.thermalgapcalc.ParamsEditText
                 android:id="@+id/in_installed_washer_2_editText"
                 style="@style/item_4_valve_et"
                 android:hint="@string/hint_0.000" />

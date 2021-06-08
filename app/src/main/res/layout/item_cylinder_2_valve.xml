@@ -95,13 +95,13 @@
 
             <TextView
                 android:id="@+id/ex_gap_label_1"
-                android:text="Зазор:"
-                style="@style/item_cylinder_param_text" />
+                style="@style/item_cylinder_param_text"
+                android:text="Зазор:" />
 
-            <EditText
-                android:gravity="center"
+            <com.example.thermalgapcalc.ParamsEditText
                 android:id="@+id/ex_gap_edit_text"
-                style="@style/param_editText" />
+                style="@style/param_editText"
+                android:gravity="center" />
         </LinearLayout>
         <!--шайба 1 выпуск-->
         <LinearLayout
@@ -113,11 +113,11 @@
             app:layout_constraintTop_toBottomOf="@+id/cylinder_number_label_divider">
 
             <TextView
-                style="@style/item_cylinder_param_text"
                 android:id="@+id/ex_installed_washer_1_label"
+                style="@style/item_cylinder_param_text"
                 android:text="@string/installed_washer" />
 
-            <EditText
+            <com.example.thermalgapcalc.ParamsEditText
                 android:id="@+id/ex_installed_washer_editText"
                 style="@style/param_editText" />
         </LinearLayout>
@@ -150,11 +150,11 @@
             app:layout_constraintTop_toBottomOf="@id/ex_label_bottom_divider">
 
             <TextView
-                style="@style/item_cylinder_param_text"
                 android:id="@+id/in_gap_label_1"
+                style="@style/item_cylinder_param_text"
                 android:text="Зазор:" />
 
-            <EditText
+            <com.example.thermalgapcalc.ParamsEditText
                 android:id="@+id/in_gap_edit_text"
                 style="@style/param_editText" />
         </LinearLayout>
@@ -170,8 +170,8 @@
             app:layout_constraintTop_toBottomOf="@id/ex_label_bottom_divider">
 
             <TextView
-                style="@style/item_cylinder_param_text"
                 android:id="@+id/in_installed_washer_1_label"
+                style="@style/item_cylinder_param_text"
                 android:text="@string/installed_washer" />
 
             <EditText
