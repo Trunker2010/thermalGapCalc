@@ -11,10 +11,10 @@ import com.example.thermalgapcalc.CylinderRVAdapter
 import com.example.thermalgapcalc.TextWatchers.EngineParamsTextWatcher
 import com.example.thermalgapcalc.databinding.FragmentCalcBinding
 
-class CalcFragment : Fragment() {
+class SetParamsFragment : Fragment() {
     private var _binding: FragmentCalcBinding? = null
     private val binding get() = _binding!!
-    private lateinit var calcViewModel: CalcViewModel
+    private lateinit var setParamsViewModel: SetParamsViewModel
     private lateinit var inGapParamsTextWatcher: EngineParamsTextWatcher
     private lateinit var exGapParamsTextWatcher: EngineParamsTextWatcher
     private lateinit var inTolerancesTextWatcher: EngineParamsTextWatcher
@@ -23,7 +23,7 @@ class CalcFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        calcViewModel = ViewModelProvider(this).get(CalcViewModel::class.java)
+        setParamsViewModel = ViewModelProvider(this).get(SetParamsViewModel::class.java)
         initTextWatchers()
     }
 
@@ -40,27 +40,27 @@ class CalcFragment : Fragment() {
             if (group.id == binding.valvesRadioGroup.id) {
                 when (checkedId) {
                     binding.radioValve2.id -> {
-                        if (calcViewModel.valveCount != 2) {
-                            calcViewModel.valveCount = 2
-                            calcViewModel.updateCylinderCount(binding.cylindersSeekBar.progress)
+                        if (setParamsViewModel.valveCount != 2) {
+                            setParamsViewModel.valveCount = 2
+                            setParamsViewModel.updateCylinderCount(binding.cylindersSeekBar.progress)
                         }
                     }
                     binding.radioValve4.id -> {
-                        if (calcViewModel.valveCount != 4) {
-                            calcViewModel.valveCount = 4
-                            calcViewModel.updateCylinderCount(binding.cylindersSeekBar.progress)
+                        if (setParamsViewModel.valveCount != 4) {
+                            setParamsViewModel.valveCount = 4
+                            setParamsViewModel.updateCylinderCount(binding.cylindersSeekBar.progress)
                         }
                     }
                 }
-                adapter.setCylinders(calcViewModel.engine.cylindersList)
+                adapter.setCylinders(setParamsViewModel.engine.cylindersList)
             }
         }
 
-        if (calcViewModel.valveCount == 0) {
+        if (setParamsViewModel.valveCount == 0) {
             binding.valvesRadioGroup.check(binding.radioValve2.id)
         }
-        if (calcViewModel.cylinderCount == 0) {
-            calcViewModel.updateCylinderCount(binding.cylindersSeekBar.progress)
+        if (setParamsViewModel.cylinderCount == 0) {
+            setParamsViewModel.updateCylinderCount(binding.cylindersSeekBar.progress)
         }
         addTextWatchers()
 
@@ -77,9 +77,9 @@ class CalcFragment : Fragment() {
             }
 
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
-                calcViewModel.updateCylinderCount(seekBar!!.progress)
+                setParamsViewModel.updateCylinderCount(seekBar!!.progress)
 
-                adapter.setCylinders(calcViewModel.engine.cylindersList)
+                adapter.setCylinders(setParamsViewModel.engine.cylindersList)
                 adapter.notifyDataSetChanged()
 
 
@@ -88,7 +88,7 @@ class CalcFragment : Fragment() {
 
         binding.cylindersRv.adapter = adapter
 
-        adapter.setCylinders(calcViewModel.engine.cylindersList)
+        adapter.setCylinders(setParamsViewModel.engine.cylindersList)
         return binding.root
     }
 
@@ -100,31 +100,31 @@ class CalcFragment : Fragment() {
     private fun initTextWatchers() {
         inGapParamsTextWatcher = EngineParamsTextWatcher { s ->
             if (s!!.isNotEmpty()) {
-                calcViewModel.updateInGapParams(s.toString().toDouble())
+                setParamsViewModel.updateInGapParams(s.toString().toDouble())
             } else {
-                calcViewModel.updateInGapParams(0.0)
+                setParamsViewModel.updateInGapParams(0.0)
             }
         }
         exGapParamsTextWatcher = EngineParamsTextWatcher { s ->
             if (s!!.isNotEmpty()) {
-                calcViewModel.updateExGapParams(s.toString().toDouble())
+                setParamsViewModel.updateExGapParams(s.toString().toDouble())
             } else {
-                calcViewModel.updateExGapParams(0.0)
+                setParamsViewModel.updateExGapParams(0.0)
             }
         }
         inTolerancesTextWatcher = EngineParamsTextWatcher { s ->
             if (s!!.isNotEmpty()) {
-                calcViewModel.updateInTolerances(s.toString().toDouble())
+                setParamsViewModel.updateInTolerances(s.toString().toDouble())
             } else {
-                calcViewModel.updateInTolerances(0.0)
+                setParamsViewModel.updateInTolerances(0.0)
             }
 
         }
         exTolerancesTextWatcher = EngineParamsTextWatcher { s ->
             if (s!!.isNotEmpty()) {
-                calcViewModel.updateExTolerances(s.toString().toDouble())
+                setParamsViewModel.updateExTolerances(s.toString().toDouble())
             } else {
-                calcViewModel.updateExTolerances(0.0)
+                setParamsViewModel.updateExTolerances(0.0)
             }
         }
     }
