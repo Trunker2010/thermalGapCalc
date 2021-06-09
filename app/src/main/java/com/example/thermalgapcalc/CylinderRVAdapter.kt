@@ -12,7 +12,7 @@ import com.example.thermalgapcalc.models.engine.Cylinder
 import java.util.*
 
 class CylinderRVAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-    var cylindersList = Collections.emptyList<Cylinder>()
+    private var cylindersList = Collections.emptyList<Cylinder>()
 
     fun setCylinders(cylinders: List<Cylinder>) {
         cylindersList = cylinders
@@ -22,7 +22,7 @@ class CylinderRVAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     //4 клапана
     class CylinderFourViewHolder(val binding: ItemCylinder4ValvesBinding) :
         RecyclerView.ViewHolder(binding.root), ListensTextChanges {
-        lateinit var cParamsTextWatcher: CylinderParamsTextWatcher
+        private lateinit var cParamsTextWatcher: CylinderParamsTextWatcher
         fun bind(cylinder: Cylinder, position: Int) {
             val cylinderN = position + 1
 
@@ -45,7 +45,6 @@ class CylinderRVAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                     SpannableStringBuilder(cylinder.inValveList[0].measuredGap.toString())
                 inGap2EditText.text =
                     SpannableStringBuilder(cylinder.inValveList[1].measuredGap.toString())
-
             }
         }
 
@@ -88,23 +87,16 @@ class CylinderRVAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             with(binding) {
                 //зазор выпускной 2
                 exGap2EditText.removeTextChangedListener(cParamsTextWatcher)
-
                 //зазор выпускной 1
                 exGap1EditText.removeTextChangedListener(cParamsTextWatcher)
-
                 //шайба выпускная 2
                 exInstalledWasher2EditText.removeTextChangedListener(cParamsTextWatcher)
-
                 //шайба выпускная 1
                 exInstalledWasher1EditText.removeTextChangedListener(cParamsTextWatcher)
-
-
                 //шайба впускная 2
                 inInstalledWasher2EditText.removeTextChangedListener(cParamsTextWatcher)
-
                 //шайба впускная 1
                 inInstalledWasher1EditText.removeTextChangedListener(cParamsTextWatcher)
-
                 //зазор впускной 2
                 inGap2EditText.removeTextChangedListener(cParamsTextWatcher)
                 //зазор впускной 1
@@ -116,7 +108,7 @@ class CylinderRVAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     //два клапана на цилиндр
     class CylinderTwoViewHolder(val binding: ItemCylinder2ValveBinding) :
         RecyclerView.ViewHolder(binding.root), ListensTextChanges {
-        lateinit var cParamsTextWatcher: CylinderParamsTextWatcher
+        private lateinit var cParamsTextWatcher: CylinderParamsTextWatcher
 
         fun bind(
             cylinder: Cylinder,
@@ -128,12 +120,10 @@ class CylinderRVAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                     SpannableStringBuilder(cylinder.exValveList[0].measuredGap.toString())
                 inGapEditText.text =
                     SpannableStringBuilder(cylinder.inValveList[0].measuredGap.toString())
-
                 exInstalledWasherEditText.text =
                     SpannableStringBuilder(cylinder.exValveList[0].washer.toString())
                 inInstalledWasher1EditText.text =
                     SpannableStringBuilder(cylinder.inValveList[0].washer.toString())
-
                 cylinderNumber.text = (position + 1).toString()
             }
         }
@@ -148,6 +138,7 @@ class CylinderRVAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
         override fun enableTextWatcher() {
             with(binding) {
+                //зазор выпускной
                 exGapEditText.addTextChangedListener(cParamsTextWatcher)
                 //шайба выпускная
                 exInstalledWasherEditText.addTextChangedListener(cParamsTextWatcher)
@@ -160,6 +151,7 @@ class CylinderRVAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
         override fun disableTextWatcher() {
             with(binding) {
+                //зазор выпускной
                 exGapEditText.removeTextChangedListener(cParamsTextWatcher)
                 //шайба выпускная
                 exInstalledWasherEditText.removeTextChangedListener(cParamsTextWatcher)
@@ -170,7 +162,6 @@ class CylinderRVAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             }
         }
     }
-
 
     override fun getItemViewType(position: Int): Int {
         return when (cylindersList[position].exValveList.size) {
@@ -194,10 +185,10 @@ class CylinderRVAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                         false
                     )
                 )
-                holder.setTextWatcher(CylinderParamsTextWatcher { pos: Int, charSequence: CharSequence? ->
+                holder.setTextWatcher(CylinderParamsTextWatcher { pos: Int, charSequence: CharSequence?, hashCode ->
                     with(holder.binding) {
 
-                        when (charSequence.hashCode()) {
+                        when (hashCode) {
                             exGap1EditText.text.hashCode() -> {
                                 cylindersList[pos].exValveList[0].measuredGap =
                                     charSequence.toString().toDouble()
@@ -253,9 +244,9 @@ class CylinderRVAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                     )
                 )
 
-                holder.setTextWatcher(CylinderParamsTextWatcher { pos: Int, charSequence: CharSequence? ->
+                holder.setTextWatcher(CylinderParamsTextWatcher { pos: Int, charSequence: CharSequence?, hashCode ->
                     with(holder.binding) {
-                        when (charSequence.hashCode()) {
+                        when (hashCode) {
                             exGapEditText.text.hashCode() -> {
                                 cylindersList[pos].exValveList[0].measuredGap =
                                     charSequence.toString().toDouble()
@@ -316,4 +307,3 @@ class CylinderRVAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         }
     }
 }
-
