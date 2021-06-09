@@ -7,7 +7,6 @@ import com.example.thermalgapcalc.POINT_SIG
 
 class EngineParamsTextWatcher(val textChange: (CharSequence?) -> Unit) : TextWatcher {
 
-
     override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
     }
 
