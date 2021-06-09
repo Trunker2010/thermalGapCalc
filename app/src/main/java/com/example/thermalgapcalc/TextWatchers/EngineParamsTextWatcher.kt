@@ -2,6 +2,7 @@ package com.example.thermalgapcalc.TextWatchers
 
 import android.text.Editable
 import android.text.TextWatcher
+import com.example.thermalgapcalc.POINT_SIG
 
 class EngineParamsTextWatcher(val textChange: (CharSequence?) -> Unit) : TextWatcher {
 
@@ -9,10 +10,11 @@ class EngineParamsTextWatcher(val textChange: (CharSequence?) -> Unit) : TextWat
     }
 
     override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-        textChange(s)
     }
 
     override fun afterTextChanged(s: Editable?) {
-
+        if (s!!.isNotEmpty() && s.toString() != POINT_SIG) {
+            textChange(s)
+        }
     }
 }

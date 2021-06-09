@@ -5,9 +5,6 @@ import android.graphics.Rect
 import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatEditText
 
-const val DEFAULT = "0"
-const val POINT = "."
-
 class ParamsEditText : AppCompatEditText {
 
     constructor(context: Context) : super(context) {
@@ -26,19 +23,10 @@ class ParamsEditText : AppCompatEditText {
         this.setWillNotDraw(false)
     }
 
-    override fun onTextChanged(
-        text: CharSequence?,
-        start: Int,
-        lengthBefore: Int,
-        lengthAfter: Int
-    ) {
-
-    }
-
     override fun onFocusChanged(focused: Boolean, direction: Int, previouslyFocusedRect: Rect?) {
         super.onFocusChanged(focused, direction, previouslyFocusedRect)
-        if (text!!.isEmpty() || text.toString() == POINT) {
-            setText(DEFAULT)
+        if (text!!.isEmpty() || text.toString() == POINT_SIG) {
+            setText(DEFAULT_PARAM)
         }
     }
 }

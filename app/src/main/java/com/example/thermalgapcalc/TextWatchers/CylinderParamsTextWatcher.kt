@@ -2,6 +2,7 @@ package com.example.thermalgapcalc.TextWatchers
 
 import android.text.Editable
 import android.text.TextWatcher
+import com.example.thermalgapcalc.POINT_SIG
 
 class CylinderParamsTextWatcher(val textChange: (Int, CharSequence?) -> Unit) : TextWatcher {
     private var position: Int = 0
@@ -17,7 +18,7 @@ class CylinderParamsTextWatcher(val textChange: (Int, CharSequence?) -> Unit) : 
     }
 
     override fun afterTextChanged(s: Editable?) {
-        if (s!!.isNotEmpty()&& s!!.toString()!=".") {
+        if (s!!.isNotEmpty() && s.toString() != POINT_SIG) {
             textChange(position, s)
         }
     }
