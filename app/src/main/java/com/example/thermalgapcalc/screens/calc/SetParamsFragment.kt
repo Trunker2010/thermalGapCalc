@@ -35,58 +35,70 @@ class SetParamsFragment : Fragment() {
     ): View? {
 
         _binding = FragmentCalcBinding.inflate(inflater, container, false)
-        engineSettingsBarBinding = binding.engineSettings
-        engineSettingsBarBinding.cylindersSizeTextView.text = engineSettingsBarBinding.cylindersSeekBar.progress.toString()
-
-        engineSettingsBarBinding.valvesRadioGroup.setOnCheckedChangeListener { group, checkedId ->
-            if (group.id == engineSettingsBarBinding.valvesRadioGroup.id) {
-                when (checkedId) {
-                    engineSettingsBarBinding.radioValve2.id -> {
-                        if (setParamsViewModel.valveCount != 2) {
-                            setParamsViewModel.valveCount = 2
-                            setParamsViewModel.updateCylinderCount(engineSettingsBarBinding.cylindersSeekBar.progress)
-                        }
-                    }
-                    engineSettingsBarBinding.radioValve4.id -> {
-                        if (setParamsViewModel.valveCount != 4) {
-                            setParamsViewModel.valveCount = 4
-                            setParamsViewModel.updateCylinderCount(engineSettingsBarBinding.cylindersSeekBar.progress)
-                        }
-                    }
-                }
-                adapter.setCylinders(setParamsViewModel.engine.cylindersList)
-            }
-        }
-
-        if (setParamsViewModel.valveCount == 0) {
-            engineSettingsBarBinding.valvesRadioGroup.check(engineSettingsBarBinding.radioValve2.id)
-        }
-        if (setParamsViewModel.cylinderCount == 0) {
-            setParamsViewModel.updateCylinderCount(engineSettingsBarBinding.cylindersSeekBar.progress)
-        }
-        addTextWatchers()
-
-        engineSettingsBarBinding.cylindersSeekBar.setOnSeekBarChangeListener(object :
-            SeekBar.OnSeekBarChangeListener {
-
-            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                engineSettingsBarBinding.cylindersSizeTextView.text = progress.toString()
-            }
-
-            override fun onStartTrackingTouch(seekBar: SeekBar?) {
-
-            }
-
-            override fun onStopTrackingTouch(seekBar: SeekBar?) {
-                setParamsViewModel.updateCylinderCount(seekBar!!.progress)
-                adapter.setCylinders(setParamsViewModel.engine.cylindersList)
-                adapter.notifyDataSetChanged()
-            }
-        })
+        initEngineSettingsBar()
 
         binding.cylindersRv.adapter = adapter
         adapter.setCylinders(setParamsViewModel.engine.cylindersList)
         return binding.root
+    }
+
+    private fun initEngineSettingsBar() {
+        engineSettingsBarBinding = binding.engineSettings
+        engineSettingsBarBinding.apply {
+            cylindersSizeTextView.text =
+                cylindersSeekBar.progress.toString()
+
+            valvesRadioGroup.setOnCheckedChangeListener { group, checkedId ->
+                if (group.id == valvesRadioGroup.id) {
+                    when (checkedId) {
+                        radioValve2.id -> {
+                            if (setParamsViewModel.valveCount != 2) {
+                                setParamsViewModel.valveCount = 2
+                                setParamsViewModel.updateCylinderCount(cylindersSeekBar.progress)
+                            }
+                        }
+                        radioValve4.id -> {
+                            if (setParamsViewModel.valveCount != 4) {
+                                setParamsViewModel.valveCount = 4
+                                setParamsViewModel.updateCylinderCount(cylindersSeekBar.progress)
+                            }
+                        }
+                    }
+                    adapter.setCylinders(setParamsViewModel.engine.cylindersList)
+                }
+            }
+
+            if (setParamsViewModel.valveCount == 0) {
+                valvesRadioGroup.check(radioValve2.id)
+            }
+            if (setParamsViewModel.cylinderCount == 0) {
+                setParamsViewModel.updateCylinderCount(cylindersSeekBar.progress)
+            }
+
+            cylindersSeekBar.setOnSeekBarChangeListener(object :
+                SeekBar.OnSeekBarChangeListener {
+
+                override fun onProgressChanged(
+                    seekBar: SeekBar?,
+                    progress: Int,
+                    fromUser: Boolean
+                ) {
+                    cylindersSizeTextView.text = progress.toString()
+                }
+
+                override fun onStartTrackingTouch(seekBar: SeekBar?) {
+
+                }
+
+                override fun onStopTrackingTouch(seekBar: SeekBar?) {
+                    setParamsViewModel.updateCylinderCount(seekBar!!.progress)
+                    adapter.setCylinders(setParamsViewModel.engine.cylindersList)
+                    adapter.notifyDataSetChanged()
+                }
+            })
+        }
+        initEngineSettingsBarEditTextParams()
+        addEngineSettingsBarTextWatchers()
     }
 
     override fun onDestroyView() {
@@ -96,40 +108,34 @@ class SetParamsFragment : Fragment() {
 
     private fun initTextWatchers() {
         inGapParamsTextWatcher = EngineParamsTextWatcher { s ->
-            if (s!!.isNotEmpty()) {
-                setParamsViewModel.updateInGapParams(s.toString().toDouble())
-            } else {
-                setParamsViewModel.updateInGapParams(0.0)
-            }
+            setParamsViewModel.updateInGapParams(s.toString().toDouble())
         }
         exGapParamsTextWatcher = EngineParamsTextWatcher { s ->
-            if (s!!.isNotEmpty()) {
-                setParamsViewModel.updateExGapParams(s.toString().toDouble())
-            } else {
-                setParamsViewModel.updateExGapParams(0.0)
-            }
+            setParamsViewModel.updateExGapParams(s.toString().toDouble())
         }
         inTolerancesTextWatcher = EngineParamsTextWatcher { s ->
-            if (s!!.isNotEmpty()) {
-                setParamsViewModel.updateInTolerances(s.toString().toDouble())
-            } else {
-                setParamsViewModel.updateInTolerances(0.0)
-            }
-
+            setParamsViewModel.updateInTolerances(s.toString().toDouble())
         }
         exTolerancesTextWatcher = EngineParamsTextWatcher { s ->
-            if (s!!.isNotEmpty()) {
-                setParamsViewModel.updateExTolerances(s.toString().toDouble())
-            } else {
-                setParamsViewModel.updateExTolerances(0.0)
-            }
+            setParamsViewModel.updateExTolerances(s.toString().toDouble())
         }
     }
 
-    private fun addTextWatchers() {
-        engineSettingsBarBinding.inGapParamsEditText.addTextChangedListener(inGapParamsTextWatcher)
-        engineSettingsBarBinding.exGapParamsEditText.addTextChangedListener(exGapParamsTextWatcher)
-        engineSettingsBarBinding.inTolerancesEditText.addTextChangedListener(inTolerancesTextWatcher)
-        engineSettingsBarBinding.exTolerancesEditText.addTextChangedListener(exTolerancesTextWatcher)
+    private fun addEngineSettingsBarTextWatchers() {
+        engineSettingsBarBinding.apply {
+            inGapParamsEditText.addTextChangedListener(inGapParamsTextWatcher)
+            exGapParamsEditText.addTextChangedListener(exGapParamsTextWatcher)
+            inTolerancesEditText.addTextChangedListener(inTolerancesTextWatcher)
+            exTolerancesEditText.addTextChangedListener(exTolerancesTextWatcher)
+        }
+    }
+
+    private fun initEngineSettingsBarEditTextParams() {
+        engineSettingsBarBinding.apply {
+            inGapParamsEditText.setText(setParamsViewModel.inGapParams.toString())
+            exGapParamsEditText.setText(setParamsViewModel.exGapParams.toString())
+            inTolerancesEditText.setText(setParamsViewModel.inTolerances.toString())
+            exTolerancesEditText.setText(setParamsViewModel.exTolerances.toString())
+        }
     }
 }
