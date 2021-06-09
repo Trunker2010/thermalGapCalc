@@ -75,21 +75,16 @@ class SetParamsFragment : Fragment() {
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
 
-
             }
 
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
                 setParamsViewModel.updateCylinderCount(seekBar!!.progress)
-
                 adapter.setCylinders(setParamsViewModel.engine.cylindersList)
                 adapter.notifyDataSetChanged()
-
-
             }
         })
 
         binding.cylindersRv.adapter = adapter
-
         adapter.setCylinders(setParamsViewModel.engine.cylindersList)
         return binding.root
     }
