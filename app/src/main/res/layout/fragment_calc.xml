@@ -1,209 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".screens.calc.SetParamsFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/engine_settings"
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:fitsSystemWindows="true">
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline_fifty_settings"
-            android:layout_width="wrap_content"
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/collapsing_toolbar"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.5" />
+            android:fitsSystemWindows="true"
+            app:layout_scrollFlags="scroll|enterAlwaysCollapsed">
 
-        <TextView
-            android:id="@+id/gap_label_textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/small_margin"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/gaps_label"
-            app:layout_constraintEnd_toStartOf="@id/guideline_fifty_settings"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <LinearLayout
-            android:id="@+id/in_gap_params_layout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/small_margin"
-            app:layout_constraintEnd_toStartOf="@id/guideline_fifty_settings"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/gap_label_textView">
-
-            <TextView
-                android:id="@+id/in_label_textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/small_margin"
-                android:text="@string/in_label"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/gap_label_textView" />
-
-            <EditText
-                android:id="@+id/in_gap_params_editText"
-                style="@style/param_editText"
-                android:layout_margin="@dimen/small_margin"
-                android:hint="@string/hint_0.000"
-                app:layout_constraintBaseline_toBaselineOf="@+id/in_label_textView"
-                app:layout_constraintStart_toEndOf="@id/in_label_textView" />
-
-            <TextView
-                android:id="@+id/in_plus_minus_label_text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/small_margin"
-                android:text="@string/digPlusMinus"
-                app:layout_constraintBaseline_toBaselineOf="@id/in_gap_params_editText"
-                app:layout_constraintStart_toEndOf="@+id/in_gap_params_editText" />
-
-            <EditText
-                android:id="@+id/in_tolerances_editText"
-                style="@style/param_editText"
-                android:layout_margin="@dimen/small_margin"
-                android:hint="@string/hint_0.000"
-                app:layout_constraintBaseline_toBaselineOf="@id/in_plus_minus_label_text_view"
-                app:layout_constraintStart_toEndOf="@id/in_plus_minus_label_text_view" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/ex_gap_params_layout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/small_margin"
-            app:layout_constrainedHeight="true"
-            app:layout_constraintEnd_toStartOf="@id/guideline_fifty_settings"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/in_gap_params_layout">
-
-            <TextView
-                android:id="@+id/big_ex_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/small_margin"
-                android:text="@string/ex_label"
-                app:layout_constraintBaseline_toBaselineOf="@id/ex_gap_params_editText"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <EditText
-                android:id="@+id/ex_gap_params_editText"
-                style="@style/param_editText"
-                android:layout_margin="@dimen/small_margin"
-                android:hint="@string/hint_0.000"
-                app:layout_constraintBaseline_toBaselineOf="@id/in_label_textView"
-                app:layout_constraintStart_toEndOf="@+id/in_label_textView" />
-
-            <TextView
-                android:id="@+id/ex_plus_minus_label_text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/small_margin"
-                android:text="@string/digPlusMinus"
-                app:layout_constraintBaseline_toBaselineOf="@id/ex_gap_params_editText"
-                app:layout_constraintStart_toEndOf="@+id/ex_gap_params_editText" />
-
-            <EditText
-                android:id="@+id/ex_tolerances_editText"
-                style="@style/param_editText"
-                android:layout_margin="@dimen/small_margin"
-                android:hint="@string/hint_0.000"
-                app:layout_constraintBaseline_toBaselineOf="@id/ex_plus_minus_label_text_view"
-                app:layout_constraintStart_toEndOf="@+id/ex_plus_minus_label_text_view" />
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/cylinders_size_textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/small_margin"
-            android:text="@string/dig_0"
-            app:layout_constraintEnd_toEndOf="@+id/cylinders_seekBar"
-            app:layout_constraintStart_toStartOf="@+id/cylinders_seekBar"
-            app:layout_constraintTop_toBottomOf="@+id/cylinders_label_textView" />
-
-        <SeekBar
-            android:id="@+id/cylinders_seekBar"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/small_margin"
-            android:max="8"
-            android:min="1"
-            android:progress="4"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@id/guideline_fifty_settings"
-            app:layout_constraintTop_toBottomOf="@+id/cylinders_size_textView" />
-
-        <TextView
-            android:id="@+id/cylinders_label_textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/small_margin"
-            android:text="@string/cylinders_label"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@id/guideline_fifty_settings"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/valves_label_textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/valves_label"
-            app:layout_constraintEnd_toEndOf="@+id/valves_radio_group"
-            app:layout_constraintStart_toStartOf="@+id/valves_radio_group"
-            app:layout_constraintTop_toBottomOf="@+id/cylinders_seekBar" />
-
-        <RadioGroup
-            android:id="@+id/valves_radio_group"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@id/guideline_fifty_settings"
-            app:layout_constraintTop_toBottomOf="@+id/valves_label_textView">
-
-            <RadioButton
-                android:id="@+id/radioValve2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/dig_2" />
-
-            <RadioButton
-                android:id="@+id/radioValve4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/dig_4" />
-        </RadioGroup>
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.Barrier
-        android:id="@+id/gap_params_horizontal_barrier"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:barrierDirection="bottom"
-        app:constraint_referenced_ids="engine_settings" />
+            <include
+                android:id="@+id/engine_settings"
+                layout="@layout/engine_settings_bar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fitsSystemWindows="true"
+                android:scaleType="centerCrop"
+                app:layout_collapseMode="parallax" />
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/cylinders_rv"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="match_parent"
         android:layout_margin="@dimen/small_margin"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/gap_params_horizontal_barrier"
-        tools:itemCount="8"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
         tools:listitem="@layout/item_cylinder_4_valves" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
