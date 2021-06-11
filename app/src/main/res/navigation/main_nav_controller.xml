@@ -3,10 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav_controler"
-    app:startDestination="@id/calcFragment2">
+    app:startDestination="@id/setParamsFragment">
     <fragment
-        android:id="@+id/calcFragment2"
-        android:name="com.example.thermalgapcalc.screens.calc.SetParamsFragment"
-        android:label="fragment_calc"
-        tools:layout="@layout/fragment_calc" />
+        android:id="@+id/calculationsFragment"
+        android:name="com.example.thermalgapcalc.screens.calculation.CalculationsFragment"
+        android:label="fragment_calculations"
+        tools:layout="@layout/fragment_calculations">
+        <action
+            android:id="@+id/action_calculationsFragment_to_setParamsFragment"
+            app:destination="@id/setParamsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/setParamsFragment"
+        android:name="com.example.thermalgapcalc.screens.params.SetParamsFragment"
+        android:label="fragment_params"
+        tools:layout="@layout/fragment_params">
+        <action
+            android:id="@+id/action_setParamsFragment_to_calculationsFragment"
+            app:destination="@id/calculationsFragment" >
+        </action>
+    </fragment>
 </navigation>

@@ -1,4 +1,4 @@
-package com.example.thermalgapcalc.screens.calc
+package com.example.thermalgapcalc.screens.params
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,26 +6,36 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.SeekBar
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
+import androidx.navigation.NavController
+import androidx.navigation.fragment.findNavController
 import com.example.thermalgapcalc.CylinderRVAdapter
 import com.example.thermalgapcalc.TextWatchers.EngineParamsTextWatcher
 import com.example.thermalgapcalc.databinding.EngineSettingsBarBinding
-import com.example.thermalgapcalc.databinding.FragmentCalcBinding
+import com.example.thermalgapcalc.databinding.FragmentParamsBinding
+import com.example.thermalgapcalc.models.engine.Engine.Companion.cylinderCount
+import com.example.thermalgapcalc.models.engine.Engine.Companion.exGapParams
+import com.example.thermalgapcalc.models.engine.Engine.Companion.exTolerances
+import com.example.thermalgapcalc.models.engine.Engine.Companion.inGapParams
+import com.example.thermalgapcalc.models.engine.Engine.Companion.inTolerances
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SetParamsFragment : Fragment() {
-    private var _binding: FragmentCalcBinding? = null
+    private var _binding: FragmentParamsBinding? = null
     private val binding get() = _binding!!
-    private lateinit var setParamsViewModel: SetParamsViewModel
+    val setParamsViewModel by viewModels<SetParamsViewModel>()
     private lateinit var inGapParamsTextWatcher: EngineParamsTextWatcher
     private lateinit var exGapParamsTextWatcher: EngineParamsTextWatcher
     private lateinit var inTolerancesTextWatcher: EngineParamsTextWatcher
     private lateinit var exTolerancesTextWatcher: EngineParamsTextWatcher
     private lateinit var engineSettingsBarBinding: EngineSettingsBarBinding
+    private lateinit var navController: NavController
     private val adapter = CylinderRVAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        navController = findNavController()
         super.onCreate(savedInstanceState)
-        setParamsViewModel = ViewModelProvider(this).get(SetParamsViewModel::class.java)
         initTextWatchers()
     }
 
@@ -33,21 +43,34 @@ class SetParamsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        _binding = FragmentCalcBinding.inflate(inflater, container, false)
+        _binding = FragmentParamsBinding.inflate(inflater, container, false)
         initEngineSettingsBar()
+        initRecyclerView()
+        initFab()
+        return binding.root
+    }
 
+    private fun initFab() {
+        binding.floatingActionButton.setOnClickListener {
+            navController.navigate(
+                SetParamsFragmentDirections.actionSetParamsFragmentToCalculationsFragment(
+                )
+            )
+        }
+    }
+
+    private fun initRecyclerView() {
         binding.cylindersRv.adapter = adapter
         adapter.setCylinders(setParamsViewModel.engine.cylindersList)
-        return binding.root
     }
 
     private fun initEngineSettingsBar() {
         engineSettingsBarBinding = binding.engineSettings
         engineSettingsBarBinding.apply {
+            //колличество цилиндров
             cylindersSizeTextView.text =
                 cylindersSeekBar.progress.toString()
-
+            //колличество клапанов
             valvesRadioGroup.setOnCheckedChangeListener { group, checkedId ->
                 if (group.id == valvesRadioGroup.id) {
                     when (checkedId) {
@@ -71,7 +94,7 @@ class SetParamsFragment : Fragment() {
             if (setParamsViewModel.valveCount == 0) {
                 valvesRadioGroup.check(radioValve2.id)
             }
-            if (setParamsViewModel.cylinderCount == 0) {
+            if (cylinderCount == 0) {
                 setParamsViewModel.updateCylinderCount(cylindersSeekBar.progress)
             }
 
@@ -132,10 +155,10 @@ class SetParamsFragment : Fragment() {
 
     private fun initEngineSettingsBarEditTextParams() {
         engineSettingsBarBinding.apply {
-            inGapParamsEditText.setText(setParamsViewModel.inGapParams.toString())
-            exGapParamsEditText.setText(setParamsViewModel.exGapParams.toString())
-            inTolerancesEditText.setText(setParamsViewModel.inTolerances.toString())
-            exTolerancesEditText.setText(setParamsViewModel.exTolerances.toString())
+            inGapParamsEditText.setText(inGapParams.toString())
+            exGapParamsEditText.setText(exGapParams.toString())
+            inTolerancesEditText.setText(inTolerances.toString())
+            exTolerancesEditText.setText(exTolerances.toString())
         }
     }
 }

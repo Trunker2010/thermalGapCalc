@@ -1,25 +1,20 @@
-package com.example.thermalgapcalc.screens.calc
+package com.example.thermalgapcalc.screens.params
 
-import android.app.Application
 import android.util.Log
-import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.ViewModel
 import com.example.thermalgapcalc.models.engine.Cylinder
-import com.example.thermalgapcalc.DaggerEngineComponent
 import com.example.thermalgapcalc.models.engine.Engine
+import com.example.thermalgapcalc.models.engine.Engine.Companion.cylinderCount
+import com.example.thermalgapcalc.models.engine.Engine.Companion.exGapParams
+import com.example.thermalgapcalc.models.engine.Engine.Companion.exTolerances
+import com.example.thermalgapcalc.models.engine.Engine.Companion.inGapParams
+import com.example.thermalgapcalc.models.engine.Engine.Companion.inTolerances
 import com.example.thermalgapcalc.models.engine.Valve
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class SetParamsViewModel(app: Application) : AndroidViewModel(app) {
-    var engine: Engine
-    var cylinderCount = 0
-    var inGapParams = 0.00
-    var exGapParams = 0.00
-    var inTolerances = 0.00
-    var exTolerances = 0.00
-
-    init {
-        val engineComponent = DaggerEngineComponent.create()
-        engine = engineComponent.getEngine()
-    }
+@HiltViewModel
+class SetParamsViewModel @Inject constructor(val engine: Engine) : ViewModel() {
 
     var valveCount = 0
         set(count) {
