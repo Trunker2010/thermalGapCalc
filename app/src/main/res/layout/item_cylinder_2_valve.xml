@@ -31,7 +31,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-
         <!--под номером цилиндра-->
         <androidx.constraintlayout.widget.Barrier
             android:id="@+id/cylinder_number_label_barrier"
@@ -40,7 +39,6 @@
             app:barrierDirection="bottom"
             app:constraint_referenced_ids="cylinder_number_label,cylinder_number"
             tools:layout_editor_absoluteY="28dp" />
-
 
         <!--    под номерами выпускных клапанов-->
         <androidx.constraintlayout.widget.Barrier
@@ -80,7 +78,6 @@
             app:layout_constraintEnd_toEndOf="@+id/line_fifty"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="@+id/line_fifty"
-
             app:layout_constraintTop_toBottomOf="@+id/cylinder_number_label_divider" />
 
         <!--зазор 1 выпуск-->
@@ -161,7 +158,6 @@
 
         <!--шайба 1 впуск-->
         <LinearLayout
-
             android:id="@+id/in_installed_washer_1"
             style="@style/warp_left_layout_style"
             app:layout_constraintBottom_toTopOf="@id/in_params_bottom_barrier"
@@ -174,7 +170,7 @@
                 style="@style/item_cylinder_param_text"
                 android:text="@string/installed_washer" />
 
-            <EditText
+            <com.example.thermalgapcalc.ParamsEditText
                 android:id="@+id/in_installed_washer_1_editText"
                 style="@style/param_editText" />
         </LinearLayout>
@@ -220,9 +216,5 @@
             app:layout_constraintEnd_toStartOf="@id/content_end"
             app:layout_constraintStart_toEndOf="@id/content_start"
             app:layout_constraintTop_toBottomOf="@id/ex_label_bottom_barrier" />
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 </androidx.cardview.widget.CardView>
