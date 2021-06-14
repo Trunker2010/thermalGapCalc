@@ -101,37 +101,17 @@ class SetParamsViewModel @Inject constructor(val engine: Engine) : ViewModel() {
 
     fun updateInGapParams(gap: Double) {
         inGapParams = gap
-        for (cylinder in engine.cylindersList) {
-            for (valve in cylinder.inValveList) {
-                valve.gap = gap
-            }
-        }
     }
 
     fun updateExGapParams(gap: Double) {
         exGapParams = gap
-        for (cylinder in engine.cylindersList) {
-            for (valve in cylinder.exValveList) {
-                valve.gap = gap
-            }
-        }
     }
 
     fun updateInTolerances(tolerances: Double) {
         inTolerances = tolerances
-        for (cylinder in engine.cylindersList) {
-            for (valve in cylinder.inValveList) {
-                valve.tolerance = tolerances
-            }
-        }
     }
 
     fun updateExTolerances(tolerances: Double) {
         exTolerances = tolerances
-        for (cylinder in engine.cylindersList) {
-            for (valve in cylinder.exValveList) {
-                valve.tolerance = tolerances
-            }
-        }
     }
 }

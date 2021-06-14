@@ -7,8 +7,8 @@ import javax.inject.Singleton
 class Engine @Inject constructor() {
     companion object {
         var cylinderCount = 0
-        var exTolerances = 0.0
-        var inTolerances = 0.0
+        var exTolerances = 0.0 //+-
+        var inTolerances = 0.0 //+-
         var exGapParams = 0.0
         var inGapParams = 0.0
     }
