@@ -3,37 +3,24 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_margin="@dimen/small_margin"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/small_margin">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-
         <TextView
-            android:id="@+id/cylinder_number"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/smallPadding"
-            android:text="@string/dig_1"
-            app:layout_constraintBaseline_toBaselineOf="@id/cylinder_number_label"
-
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/cylinder_number_label" />
-
-        <TextView
-
+            android:gravity="center"
             android:id="@+id/cylinder_number_label"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:padding="@dimen/smallPadding"
             android:text="@string/cylinder_number_label"
-            app:layout_constraintEnd_toStartOf="@+id/cylinder_number"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
 
         <!--под номером цилиндра-->
         <androidx.constraintlayout.widget.Barrier
@@ -41,7 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:barrierDirection="bottom"
-            app:constraint_referenced_ids="cylinder_number_label,cylinder_number" />
+            app:constraint_referenced_ids="cylinder_number_label" />
 
         <!--    под номерами выпускных клапанов-->
         <androidx.constraintlayout.widget.Barrier
@@ -53,7 +40,6 @@
             app:constraint_referenced_ids="ex_n1_label,ex_n2_label" />
 
         <TextView
-
             android:id="@+id/ex_n1_label"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -62,23 +48,18 @@
             app:layout_constraintEnd_toStartOf="@id/big_ex_label"
             app:layout_constraintStart_toStartOf="@id/content_start"
             app:layout_constraintTop_toBottomOf="@+id/cylinder_number_label_divider"
-
-
             />
 
         <TextView
             android:id="@+id/ex_n2_label"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-
             android:gravity="center"
             android:text="@string/dig_2"
             app:layout_constraintEnd_toEndOf="@id/content_end"
             app:layout_constraintStart_toEndOf="@id/big_ex_label"
             app:layout_constraintTop_toBottomOf="@+id/cylinder_number_label_divider"
-
             />
-
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/content_start"
@@ -122,12 +103,12 @@
             <TextView
                 android:id="@+id/ex_gap_label_1"
                 style="@style/item_cylinder_param_text"
-                android:text="Зазор:" />
+                android:text="@string/gap" />
 
             <com.example.thermalgapcalc.ParamsEditText
                 android:id="@+id/ex_gap_1_edit_text"
-                style="@style/item_4_valve_et"
-                android:hint="@string/hint_0.000" />
+                style="@style/param_editText"
+                android:hint="@string/hint_params_mm" />
         </LinearLayout>
 
         <!--шайба 1 выпуск-->
@@ -141,14 +122,14 @@
             app:layout_constraintTop_toBottomOf="@+id/valve_number_label_divider">
 
             <TextView
-                style="@style/item_cylinder_param_text"
                 android:id="@+id/ex_installed_washer_1_label"
+                style="@style/item_cylinder_param_text"
                 android:text="@string/installed_washer" />
 
             <com.example.thermalgapcalc.ParamsEditText
                 android:id="@+id/ex_installed_washer_1_editText"
-                style="@style/item_4_valve_et"
-                android:hint="@string/hint_0.000" />
+                style="@style/param_editText"
+                android:hint="@string/hint_params_mm" />
         </LinearLayout>
 
         <!--зазор 2 выпуск-->
@@ -162,14 +143,14 @@
             app:layout_constraintTop_toBottomOf="@+id/valve_number_label_divider">
 
             <TextView
-                style="@style/item_cylinder_param_text"
                 android:id="@+id/ex_gap_label_2_label"
-                android:text="Зазор:" />
+                style="@style/item_cylinder_param_text"
+                android:text="@string/gap" />
 
             <com.example.thermalgapcalc.ParamsEditText
                 android:id="@+id/ex_gap_2_editText"
-                style="@style/item_4_valve_et"
-                android:hint="@string/hint_0.000" />
+                style="@style/param_editText"
+                android:hint="@string/hint_params_mm" />
         </LinearLayout>
 
         <!--шайба 2 выпуск-->
@@ -182,14 +163,14 @@
             app:layout_constraintTop_toBottomOf="@id/valve_number_label_divider">
 
             <TextView
-                style="@style/item_cylinder_param_text"
                 android:id="@+id/ex_installed_washer_2_label"
+                style="@style/item_cylinder_param_text"
                 android:text="@string/installed_washer" />
 
             <com.example.thermalgapcalc.ParamsEditText
                 android:id="@+id/ex_installed_washer_2_editText"
-                style="@style/item_4_valve_et"
-                android:hint="@string/hint_0.000" />
+                style="@style/param_editText"
+                android:hint="@string/hint_params_mm" />
         </LinearLayout>
 
         <androidx.constraintlayout.widget.Barrier
@@ -219,19 +200,18 @@
             app:layout_constraintTop_toBottomOf="@id/ex_params_bottom_divider">
 
             <TextView
-                style="@style/item_cylinder_param_text"
                 android:id="@+id/in_gap_label_1"
-                android:text="Зазор:" />
+                style="@style/item_cylinder_param_text"
+                android:text="@string/gap" />
 
             <com.example.thermalgapcalc.ParamsEditText
                 android:id="@+id/in_gap_1_edit_text"
-                style="@style/item_4_valve_et"
-                android:hint="@string/hint_0.000" />
+                style="@style/param_editText"
+                android:hint="@string/hint_params_mm" />
         </LinearLayout>
 
         <!--шайба 1 впуск-->
         <LinearLayout
-
             android:id="@+id/in_installed_washer_1"
             style="@style/warp_left_layout_style"
             app:layout_constraintBottom_toTopOf="@+id/in_params_bottom_barrier"
@@ -240,19 +220,18 @@
             app:layout_constraintTop_toBottomOf="@id/ex_params_bottom_divider">
 
             <TextView
-                style="@style/item_cylinder_param_text"
                 android:id="@+id/in_installed_washer_1_label"
+                style="@style/item_cylinder_param_text"
                 android:text="@string/installed_washer" />
 
             <com.example.thermalgapcalc.ParamsEditText
                 android:id="@+id/in_installed_washer_1_editText"
-                style="@style/item_4_valve_et"
-                android:hint="@string/hint_0.000" />
+                style="@style/param_editText"
+                android:hint="@string/hint_params_mm" />
         </LinearLayout>
 
         <!--зазор 2 впуск-->
         <LinearLayout
-
             android:id="@+id/in_gap_2_layout"
             style="@style/right_gap_layout"
             app:layout_constraintBottom_toTopOf="@id/in_params_bottom_barrier"
@@ -261,21 +240,19 @@
             app:layout_constraintTop_toBottomOf="@id/ex_params_bottom_divider">
 
             <TextView
-                style="@style/item_cylinder_param_text"
                 android:id="@+id/in_gap_label_2_label"
-                android:text="Зазор:" />
+                style="@style/item_cylinder_param_text"
+                android:text="@string/gap" />
 
             <com.example.thermalgapcalc.ParamsEditText
                 android:id="@+id/in_gap_2_editText"
-                style="@style/item_4_valve_et"
-                android:hint="@string/hint_0.000" />
+                style="@style/param_editText"
+                android:hint="@string/hint_params_mm" />
         </LinearLayout>
 
         <!--шайба 2 впуск-->
         <LinearLayout
-
             android:id="@+id/in_installed_washer_2"
-
             style="@style/right_washer_layout"
             app:layout_constraintBottom_toTopOf="@id/in_params_bottom_barrier"
             app:layout_constraintEnd_toStartOf="@id/content_end"
@@ -283,14 +260,14 @@
             app:layout_constraintTop_toBottomOf="@id/ex_params_bottom_divider">
 
             <TextView
-                style="@style/item_cylinder_param_text"
                 android:id="@+id/in_installed_washer_2_label"
+                style="@style/item_cylinder_param_text"
                 android:text="@string/installed_washer" />
 
             <com.example.thermalgapcalc.ParamsEditText
                 android:id="@+id/in_installed_washer_2_editText"
-                style="@style/item_4_valve_et"
-                android:hint="@string/hint_0.000" />
+                style="@style/param_editText"
+                android:hint="@string/hint_params_mm" />
         </LinearLayout>
 
         <androidx.constraintlayout.widget.Barrier
@@ -315,28 +292,30 @@
             app:constraint_referenced_ids="in_installed_washer_1,in_gap_1_layout,in_installed_washer_2,big_IN_label,in_gap_2_layout" />
 
         <View
-            app:layout_constraintStart_toEndOf="@id/content_start"
-            app:layout_constraintEnd_toStartOf="@id/content_end"
-            app:layout_constraintTop_toBottomOf="@id/cylinder_number_label_barrier"
             android:id="@+id/cylinder_number_label_divider"
             android:layout_width="0dp"
             android:layout_height="1dp"
-            android:background="?android:attr/listDivider" />
-        <View
-            app:layout_constraintStart_toEndOf="@id/content_start"
+            android:background="?android:attr/listDivider"
             app:layout_constraintEnd_toStartOf="@id/content_end"
-            app:layout_constraintTop_toBottomOf="@id/labels_bottom_barrier"
+            app:layout_constraintStart_toEndOf="@id/content_start"
+            app:layout_constraintTop_toBottomOf="@id/cylinder_number_label_barrier" />
+
+        <View
             android:id="@+id/valve_number_label_divider"
             android:layout_width="0dp"
             android:layout_height="1dp"
-            android:background="?android:attr/listDivider" />
-        <View
-            app:layout_constraintStart_toEndOf="@id/content_start"
+            android:background="?android:attr/listDivider"
             app:layout_constraintEnd_toStartOf="@id/content_end"
-            app:layout_constraintTop_toBottomOf="@id/ex_label_bottom_barrier"
+            app:layout_constraintStart_toEndOf="@id/content_start"
+            app:layout_constraintTop_toBottomOf="@id/labels_bottom_barrier" />
+
+        <View
             android:id="@+id/ex_params_bottom_divider"
             android:layout_width="0dp"
             android:layout_height="1dp"
-            android:background="?android:attr/listDivider" />
+            android:background="?android:attr/listDivider"
+            app:layout_constraintEnd_toStartOf="@id/content_end"
+            app:layout_constraintStart_toEndOf="@id/content_start"
+            app:layout_constraintTop_toBottomOf="@id/ex_label_bottom_barrier" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

@@ -41,19 +41,10 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     def nav_version = "2.3.5"
     def hilt_version = "2.36"
-    def dagger_version = "2.33"
 
     //navigation
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
-
-    //dagger
-//    def daggerVer = 2.33
-//
-//    implementation "com.google.dagger:dagger:$daggerVer"
-//    implementation "com.google.dagger:dagger-android-support:$daggerVer"
-//    kapt "com.google.dagger:dagger-android-processor:$daggerVer"
-//    kapt "com.google.dagger:dagger-compiler:$daggerVer"
 
     implementation 'androidx.fragment:fragment-ktx:1.3.4'
 

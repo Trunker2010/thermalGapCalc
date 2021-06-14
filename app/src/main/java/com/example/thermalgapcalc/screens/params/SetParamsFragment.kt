@@ -42,7 +42,7 @@ class SetParamsFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentParamsBinding.inflate(inflater, container, false)
         initEngineSettingsBar()
         initRecyclerView()
