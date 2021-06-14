@@ -1,5 +1,6 @@
 package com.example.thermalgapcalc
 
+import android.content.Context
 import android.text.SpannableStringBuilder
 import android.util.Log
 import android.view.LayoutInflater
@@ -11,7 +12,8 @@ import com.example.thermalgapcalc.databinding.ItemCylinder4ValvesBinding
 import com.example.thermalgapcalc.models.engine.Cylinder
 import java.util.*
 
-class CylinderRVAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class CylinderRVAdapter :
+    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private var cylindersList = Collections.emptyList<Cylinder>()
 
     fun setCylinders(cylinders: List<Cylinder>) {
@@ -23,11 +25,13 @@ class CylinderRVAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     class CylinderFourViewHolder(val binding: ItemCylinder4ValvesBinding) :
         RecyclerView.ViewHolder(binding.root), ListensTextChanges {
         private lateinit var cParamsTextWatcher: CylinderParamsTextWatcher
+        val context: Context = binding.root.context
         fun bind(cylinder: Cylinder, position: Int) {
-            val cylinderN = position + 1
+            val cylinderN = (position + 1).toString()
 
             with(binding) {
-                cylinderNumber.text = cylinderN.toString()
+                cylinderNumberLabel.text =
+                    context.getString(R.string.cylinder_number_label, cylinderN)
 
                 exGap1EditText.text =
                     SpannableStringBuilder(cylinder.exValveList[0].measuredGap.toString())
@@ -60,22 +64,16 @@ class CylinderRVAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             with(binding) {
                 //зазор выпускной 2
                 exGap2EditText.addTextChangedListener(cParamsTextWatcher)
-
                 //зазор выпускной 1
                 exGap1EditText.addTextChangedListener(cParamsTextWatcher)
-
                 //шайба выпускная 2
                 exInstalledWasher2EditText.addTextChangedListener(cParamsTextWatcher)
-
                 //шайба выпускная 1
                 exInstalledWasher1EditText.addTextChangedListener(cParamsTextWatcher)
-
                 //шайба впускная 2
                 inInstalledWasher2EditText.addTextChangedListener(cParamsTextWatcher)
-
                 //шайба впускная 1
                 inInstalledWasher1EditText.addTextChangedListener(cParamsTextWatcher)
-
                 //зазор впускной 2
                 inGap2EditText.addTextChangedListener(cParamsTextWatcher)
                 //зазор впускной 1
@@ -103,19 +101,22 @@ class CylinderRVAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 inGap1EditText.removeTextChangedListener(cParamsTextWatcher)
             }
         }
+
     }
 
     //два клапана на цилиндр
-    class CylinderTwoViewHolder(val binding: ItemCylinder2ValveBinding) :
+    class CylinderTwoViewHolder constructor(
+        val binding: ItemCylinder2ValveBinding,
+    ) :
         RecyclerView.ViewHolder(binding.root), ListensTextChanges {
         private lateinit var cParamsTextWatcher: CylinderParamsTextWatcher
-
+        val context: Context = binding.root.context
         fun bind(
             cylinder: Cylinder,
-            position: Int,
-
-            ) {
+            position: Int
+        ) {
             with(binding) {
+                val cylinderNumber = (position + 1).toString()
                 exGapEditText.text =
                     SpannableStringBuilder(cylinder.exValveList[0].measuredGap.toString())
                 inGapEditText.text =
@@ -124,7 +125,10 @@ class CylinderRVAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                     SpannableStringBuilder(cylinder.exValveList[0].washer.toString())
                 inInstalledWasher1EditText.text =
                     SpannableStringBuilder(cylinder.inValveList[0].washer.toString())
-                cylinderNumber.text = (position + 1).toString()
+                cylinderNumberLabel.text = context.getString(
+                    R.string.cylinder_number_label,
+                    cylinderNumber
+                )
             }
         }
 
@@ -237,7 +241,7 @@ class CylinderRVAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             else -> {
 
                 val holder = CylinderTwoViewHolder(
-                    ItemCylinder2ValveBinding.inflate(
+                    binding = ItemCylinder2ValveBinding.inflate(
                         LayoutInflater.from(parent.context),
                         parent,
                         false

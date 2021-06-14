@@ -1,6 +1,5 @@
-package com.example.thermalgapcalc
+package com.example.thermalgapcalc.models.engine
 
-import com.example.thermalgapcalc.models.engine.Engine
 import dagger.Component
 import javax.inject.Singleton
 

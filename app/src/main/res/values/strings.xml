@@ -4,18 +4,19 @@
     <string name="gaps_label">Зазоры mm:</string>
     <string name="in_label">IN</string>
     <string name="digPlusMinus">±</string>
-    <string name="hint_0.000">0.0</string>
+    <string name="hint_params_mm">mm</string>
     <string name="ex_label">EX</string>
     <string name="cylinders_label">Цилиндры:</string>
     <string name="valves_label">Клапаны:</string>
     <string name="dig_1">1</string>
     <string name="dig_2">2</string>
-    <string name="cylinder_number_label">Цилиндр №:</string>
+    <string name="cylinder_number_label">Цилиндр №%1$s</string>
     <string name="installed_washer">Шайба:</string>
     <string name="dig_0">0</string>
     <string name="dig_4">4</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="calculate">calculate</string>
+    <string name="gap">Зазор:</string>
 
 </resources>

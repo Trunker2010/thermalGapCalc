@@ -5,6 +5,7 @@
     android:id="@+id/engine_settings"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:padding="@dimen/smallPadding"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
@@ -19,10 +20,9 @@
 
     <TextView
         android:id="@+id/gap_label_textView"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/small_margin"
-        android:layout_weight="1"
         android:gravity="center"
         android:text="@string/gaps_label"
         app:layout_constraintEnd_toStartOf="@id/guideline_fifty_settings"
@@ -31,9 +31,10 @@
 
     <LinearLayout
         android:id="@+id/in_gap_params_layout"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/small_margin"
+        android:gravity="center"
         app:layout_constraintEnd_toStartOf="@id/guideline_fifty_settings"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/gap_label_textView">
@@ -51,7 +52,7 @@
             android:id="@+id/in_gap_params_editText"
             style="@style/param_editText"
             android:layout_margin="@dimen/small_margin"
-            android:hint="@string/hint_0.000"
+            android:hint="@string/hint_params_mm"
             app:layout_constraintBaseline_toBaselineOf="@+id/in_label_textView"
             app:layout_constraintStart_toEndOf="@id/in_label_textView" />
 
@@ -68,17 +69,29 @@
             android:id="@+id/in_tolerances_editText"
             style="@style/param_editText"
             android:layout_margin="@dimen/small_margin"
-            android:hint="@string/hint_0.000"
+            android:hint="@string/hint_params_mm"
             app:layout_constraintBaseline_toBaselineOf="@id/in_plus_minus_label_text_view"
             app:layout_constraintStart_toEndOf="@id/in_plus_minus_label_text_view" />
     </LinearLayout>
 
+    <View
+        android:id="@+id/ex_label_bottom_divider"
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/guideline_fifty_settings"
+        app:layout_constraintStart_toStartOf="@id/guideline_fifty_settings"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <LinearLayout
         android:id="@+id/ex_gap_params_layout"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/small_margin"
+        android:gravity="center"
         app:layout_constrainedHeight="true"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/guideline_fifty_settings"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/in_gap_params_layout">
@@ -96,7 +109,7 @@
             android:id="@+id/ex_gap_params_editText"
             style="@style/param_editText"
             android:layout_margin="@dimen/small_margin"
-            android:hint="@string/hint_0.000"
+            android:hint="@string/hint_params_mm"
             app:layout_constraintBaseline_toBaselineOf="@id/in_label_textView"
             app:layout_constraintStart_toEndOf="@+id/in_label_textView" />
 
@@ -113,28 +126,30 @@
             android:id="@+id/ex_tolerances_editText"
             style="@style/param_editText"
             android:layout_margin="@dimen/small_margin"
-            android:hint="@string/hint_0.000"
+            android:hint="@string/hint_params_mm"
             app:layout_constraintBaseline_toBaselineOf="@id/ex_plus_minus_label_text_view"
             app:layout_constraintStart_toEndOf="@+id/ex_plus_minus_label_text_view" />
     </LinearLayout>
 
     <TextView
         android:id="@+id/cylinders_size_textView"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:padding="@dimen/small_margin"
+        android:layout_margin="@dimen/small_margin"
+        android:gravity="center"
         android:text="@string/dig_0"
-        app:layout_constraintEnd_toEndOf="@+id/cylinders_seekBar"
-        app:layout_constraintStart_toStartOf="@+id/cylinders_seekBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/guideline_fifty_settings"
         app:layout_constraintTop_toBottomOf="@+id/cylinders_label_textView" />
 
-    <SeekBar
+    <androidx.appcompat.widget.AppCompatSeekBar
         android:id="@+id/cylinders_seekBar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/small_margin"
         android:max="8"
         android:min="1"
+        android:padding="@dimen/smallPadding"
         android:progress="4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/guideline_fifty_settings"
@@ -142,9 +157,10 @@
 
     <TextView
         android:id="@+id/cylinders_label_textView"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/small_margin"
+        android:gravity="center"
         android:text="@string/cylinders_label"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/guideline_fifty_settings"
@@ -152,17 +168,21 @@
 
     <TextView
         android:id="@+id/valves_label_textView"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/small_margin"
+        android:gravity="center"
         android:text="@string/valves_label"
-        app:layout_constraintEnd_toEndOf="@+id/valves_radio_group"
-        app:layout_constraintStart_toStartOf="@+id/valves_radio_group"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/guideline_fifty_settings"
         app:layout_constraintTop_toBottomOf="@+id/cylinders_seekBar" />
 
     <RadioGroup
         android:id="@+id/valves_radio_group"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/small_margin"
+        android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/guideline_fifty_settings"

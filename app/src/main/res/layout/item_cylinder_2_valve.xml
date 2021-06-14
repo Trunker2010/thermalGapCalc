@@ -10,15 +10,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/cylinder_number"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/smallPadding"
-            android:text="@string/dig_1"
-            app:layout_constraintBaseline_toBaselineOf="@id/cylinder_number_label"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/cylinder_number_label" />
 
         <TextView
             android:id="@+id/cylinder_number_label"
@@ -26,7 +17,7 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/smallPadding"
             android:text="@string/cylinder_number_label"
-            app:layout_constraintEnd_toStartOf="@+id/cylinder_number"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -37,7 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:barrierDirection="bottom"
-            app:constraint_referenced_ids="cylinder_number_label,cylinder_number"
+            app:constraint_referenced_ids="cylinder_number_label"
             tools:layout_editor_absoluteY="28dp" />
 
         <!--    под номерами выпускных клапанов-->
@@ -93,7 +84,9 @@
             <TextView
                 android:id="@+id/ex_gap_label_1"
                 style="@style/item_cylinder_param_text"
-                android:text="Зазор:" />
+                android:text="@string/gap" />
+
+
 
             <com.example.thermalgapcalc.ParamsEditText
                 android:id="@+id/ex_gap_edit_text"
@@ -149,7 +142,7 @@
             <TextView
                 android:id="@+id/in_gap_label_1"
                 style="@style/item_cylinder_param_text"
-                android:text="Зазор:" />
+                android:text="@string/gap" />
 
             <com.example.thermalgapcalc.ParamsEditText
                 android:id="@+id/in_gap_edit_text"
